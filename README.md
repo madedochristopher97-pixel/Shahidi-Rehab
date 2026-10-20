@@ -48,4 +48,10 @@ The files in `images/` are SVGO-optimised copies of the originals in `Assets/Her
 
 ## Enquiry forms
 
-There is no server. The forms open the visitor's email app with the message pre-filled, addressed to the centre. To receive submissions directly, connect the forms to a form service (Formspree, Netlify Forms, etc.) in `initForms()` in `js/main.js`.
+Forms are sent through [Formspree](https://formspree.io). To switch them on:
+
+1. Create a free Formspree form that delivers to restoracentreforrecovery@gmail.com.
+2. Copy its endpoint (looks like `https://formspree.io/f/abcdwxyz`).
+3. Paste it into `FORMSPREE_ENDPOINT` at the top of `js/main.js`.
+
+Until an endpoint is set, the forms fall back to opening the visitor's email app with the message pre-filled. Each form includes a hidden spam-trap field, and visitors see a clear success or error message with the phone number as backup.

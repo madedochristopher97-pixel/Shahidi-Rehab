@@ -8,6 +8,8 @@
 
   var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
   var CONTACT_PHONE = '+254 795 180 704';
+  // Paste your Formspree form URL here, e.g. 'https://formspree.io/f/abcdwxyz'
+  var FORMSPREE_ENDPOINT = '';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lenis = null;
 
@@ -52,6 +54,11 @@
   function initForms() {
     document.querySelectorAll('form[data-enquiry]').forEach(function (form) {
       var feedback = form.querySelector('.form-feedback');
+      var button = form.querySelector('button[type="submit"]');
+      var label = button ? button.textContent : '';
+
+      function show(type, text) { feedback.className = 'form-feedback ' + type; feedback.textContent = text; }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var name = (form.elements.fullName.value || '').trim();
@@ -59,18 +66,41 @@
         var who = form.elements.whoFor ? form.elements.whoFor.value : '';
         var message = form.elements.message ? (form.elements.message.value || '').trim() : '';
 
+        if (form.elements._gotcha && form.elements._gotcha.value) return; // spam trap
+
         if (!name || !contact) {
-          feedback.className = 'form-feedback error';
-          feedback.textContent = 'Please add your name and a phone number or email so we can reply.';
+          show('error', 'Please add your name and a phone number or email so we can reply.');
           (!name ? form.elements.fullName : form.elements.contact).focus();
           return;
         }
 
-        var body = 'Name: ' + name + '\nPhone or email: ' + contact + (who ? '\nEnquiry for: ' + who : '') + '\n\n' + message;
-        var href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Enquiry from ' + name) + '&body=' + encodeURIComponent(body);
-        feedback.className = 'form-feedback success';
-        feedback.textContent = 'Your email app should open with your message ready to send. If it does not, call ' + CONTACT_PHONE + ' or write to ' + CONTACT_EMAIL + '.';
-        window.location.href = href;
+        var fallback = 'call ' + CONTACT_PHONE + ' or write to ' + CONTACT_EMAIL + '.';
+
+        // No Formspree endpoint set yet: open the visitor's email app instead
+        if (!FORMSPREE_ENDPOINT) {
+          var body = 'Name: ' + name + '\nPhone or email: ' + contact + (who ? '\nEnquiry for: ' + who : '') + '\n\n' + message;
+          show('success', 'Your email app should open with your message ready to send. If it does not, ' + fallback);
+          window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Enquiry from ' + name) + '&body=' + encodeURIComponent(body);
+          return;
+        }
+
+        var data = new FormData(form);
+        data.append('_subject', 'Website enquiry from ' + name);
+        if (/^\S+@\S+\.\S+$/.test(contact)) data.append('email', contact);
+
+        if (button) { button.disabled = true; button.textContent = 'Sending...'; }
+        feedback.className = 'form-feedback';
+        feedback.textContent = '';
+        fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('status ' + res.status);
+            form.reset();
+            show('success', 'Thank you, ' + name + '. We have your message and will reply privately. If it is urgent, please ' + fallback);
+          })
+          .catch(function () {
+            show('error', 'Sorry, your message did not send. Please ' + fallback);
+          })
+          .then(function () { if (button) { button.disabled = false; button.textContent = label; } });
       });
     });
   }

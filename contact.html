@@ -95,9 +95,10 @@
             <div class="field"><label for="cName">Your name</label><input class="input" type="text" id="cName" name="fullName" autocomplete="given-name" required></div>
             <div class="field"><label for="cContact">Phone or email</label><input class="input" type="text" id="cContact" name="contact" autocomplete="off" required></div>
             <div class="field"><label for="cMessage">How can we help? <span class="hint">(optional)</span></label><textarea class="textarea" id="cMessage" name="message"></textarea></div>
+            <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
             <div class="form-feedback" role="status" aria-live="polite"></div>
             <button type="submit" class="btn btn-navy btn-lg btn-block">Send message</button>
-            <p class="form-note">This opens your email app with your message ready to send.</p>
+            <p class="form-note">Your message goes straight to our team.</p>
           </form>
         </div>
       </div>
