@@ -1,206 +1,153 @@
 /**
- * Shahidi Centre for Recovery - Core JavaScript
- * "Witnessing Recovery, Transforming Lives."
- * Handles: Responsive Navigation, Sticky Header, FAQ Accordions,
- * Direct WhatsApp Linkages, Contact Form Validations, and Accessibility.
+ * Restora Centre for Recovery - site scripts
+ * Header state, mobile drawer, enquiry forms, Lenis smooth scroll, GSAP reveals.
+ * Motion is progressive: with no JS, no GSAP or reduced-motion, everything shows immediately.
  */
+(function () {
+  'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  initStickyHeader();
-  initMobileNav();
-  initFaqAccordions();
-  initForms();
-  initActiveNavLink();
-  initContactModal();
-});
+  var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
+  var CONTACT_PHONE = '+254 795 180 704';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lenis = null;
 
-/* --------------------------------------------------------------------------
-   1. Sticky Header Shadow on Scroll
-   -------------------------------------------------------------------------- */
-function initStickyHeader() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
+  /* ---------- Header: solid once the page has scrolled ---------- */
+  function initHeader() {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    var update = function () {
+      header.classList.toggle('is-solid', window.scrollY > 24 || !header.classList.contains('over-hero'));
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
 
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
+  /* ---------- Mobile drawer ---------- */
+  function initDrawer() {
+    var toggle = document.querySelector('.menu-toggle');
+    var drawer = document.querySelector('.drawer');
+    var overlay = document.querySelector('.drawer-overlay');
+    var close = document.querySelector('.drawer-close');
+    if (!toggle || !drawer || !overlay) return;
+
+    function setOpen(open) {
+      drawer.classList.toggle('open', open);
+      overlay.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (lenis) open ? lenis.stop() : lenis.start();
+      if (open && close) close.focus(); else if (!open) toggle.focus({ preventScroll: true });
+    }
+
+    toggle.addEventListener('click', function () { setOpen(true); });
+    if (close) close.addEventListener('click', function () { setOpen(false); });
+    overlay.addEventListener('click', function () { setOpen(false); });
+    drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { if (drawer.classList.contains('open')) setOpen(false); }); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) setOpen(false);
+    });
+  }
+
+  /* ---------- Enquiry forms (no backend: hand the message to the visitor's email app) ---------- */
+  function initForms() {
+    document.querySelectorAll('form[data-enquiry]').forEach(function (form) {
+      var feedback = form.querySelector('.form-feedback');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = (form.elements.fullName.value || '').trim();
+        var contact = (form.elements.contact.value || '').trim();
+        var who = form.elements.whoFor ? form.elements.whoFor.value : '';
+        var message = form.elements.message ? (form.elements.message.value || '').trim() : '';
+
+        if (!name || !contact) {
+          feedback.className = 'form-feedback error';
+          feedback.textContent = 'Please add your name and a phone number or email so we can reply.';
+          (!name ? form.elements.fullName : form.elements.contact).focus();
+          return;
+        }
+
+        var body = 'Name: ' + name + '\nPhone or email: ' + contact + (who ? '\nEnquiry for: ' + who : '') + '\n\n' + message;
+        var href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Enquiry from ' + name) + '&body=' + encodeURIComponent(body);
+        feedback.className = 'form-feedback success';
+        feedback.textContent = 'Your email app should open with your message ready to send. If it does not, call ' + CONTACT_PHONE + ' or write to ' + CONTACT_EMAIL + '.';
+        window.location.href = href;
+      });
+    });
+  }
+
+  /* ---------- Lenis smooth scroll, wired to GSAP's ticker ---------- */
+  function initSmoothScroll() {
+    if (reduceMotion || typeof window.Lenis === 'undefined') return;
+    lenis = new window.Lenis({ duration: 1.1, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
+
+    if (window.gsap && window.ScrollTrigger) {
+      lenis.on('scroll', window.ScrollTrigger.update);
+      window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      window.gsap.ticker.lagSmoothing(0);
     } else {
-      header.classList.remove('scrolled');
+      var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
     }
-  };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-}
+    document.querySelectorAll('a[href*="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var url = new URL(a.href, window.location.href);
+        if (url.pathname !== window.location.pathname || !url.hash || url.hash === '#') return;
+        var target = document.querySelector(url.hash);
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -(76 + 16) });
+        history.pushState(null, '', url.hash);
+      });
+    });
+  }
 
-/* --------------------------------------------------------------------------
-   2. Responsive Mobile Drawer Navigation
-   -------------------------------------------------------------------------- */
-function initMobileNav() {
-  const toggleBtn = document.querySelector('.mobile-nav-toggle');
-  const drawer = document.querySelector('.mobile-drawer');
-  const overlay = document.querySelector('.mobile-drawer-overlay');
-  const closeBtn = document.querySelector('.mobile-drawer-close');
-
-  if (!toggleBtn || !drawer || !overlay) return;
-
-  const openDrawer = () => {
-    drawer.classList.add('open');
-    overlay.classList.add('open');
-    toggleBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeDrawer = () => {
-    drawer.classList.remove('open');
-    overlay.classList.remove('open');
-    toggleBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  };
-
-  toggleBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) {
-      closeDrawer();
+  /* ---------- GSAP: one gentle reveal, one slow hero drift ---------- */
+  function initMotion() {
+    var root = document.documentElement;
+    if (reduceMotion || !window.gsap || !window.ScrollTrigger) {
+      root.classList.add('reveal-off');
+      return;
     }
-  });
-}
+    var gsap = window.gsap;
+    gsap.registerPlugin(window.ScrollTrigger);
+    window.__animReady = true;
 
-/* --------------------------------------------------------------------------
-   3. Accessible FAQ Accordions
-   -------------------------------------------------------------------------- */
-function initFaqAccordions() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  if (!faqItems.length) return;
+    // Hero: staggered arrival on load
+    var heroItems = gsap.utils.toArray('[data-hero]');
+    if (heroItems.length) {
+      gsap.to(heroItems, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.15 });
+    }
 
-  faqItems.forEach((item) => {
-    const btn = item.querySelector('.faq-question-btn');
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-      // Optionally close other items in the same accordion
-      faqItems.forEach((other) => {
-        if (other !== item) {
-          other.classList.remove('active');
-          const otherBtn = other.querySelector('.faq-question-btn');
-          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+    // Everything else: reveal once as it enters, small stagger inside a batch
+    var items = gsap.utils.toArray('[data-reveal]:not([data-hero])');
+    if (items.length) {
+      window.ScrollTrigger.batch(items, {
+        start: 'top 90%',
+        once: true,
+        onEnter: function (batch) {
+          gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, overwrite: true });
         }
       });
-
-      if (isExpanded) {
-        item.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        item.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-}
-
-/* --------------------------------------------------------------------------
-   4. Active Navigation Link Sync
-   -------------------------------------------------------------------------- */
-function initActiveNavLink() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.main-nav .nav-link, .mobile-drawer-nav .nav-link');
-
-  navLinks.forEach((link) => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
-    } else {
-      link.classList.remove('active');
-      link.removeAttribute('aria-current');
     }
-  });
-}
 
-/* --------------------------------------------------------------------------
-   5. Interactive Admissions / Contact Form
-   -------------------------------------------------------------------------- */
-function initForms() {
-  const forms = document.querySelectorAll('form[data-validate="true"]');
-  forms.forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const feedback = form.querySelector('.form-feedback') || createFeedbackContainer(form);
-
-      const name = form.querySelector('[name="fullName"]')?.value?.trim();
-      const contact = form.querySelector('[name="contact"]')?.value?.trim();
-
-      if (!name || !contact) {
-        showFeedback(feedback, 'Please provide both your name and a preferred phone or email so we can reach you.', 'error');
-        return;
-      }
-
-      showFeedback(feedback, 'Thank you, ' + name + '. Your confidential inquiry has been received. Our clinical intake coordinator will reach out shortly.', 'success');
-      form.reset();
-    });
-  });
-}
-
-function createFeedbackContainer(form) {
-  const div = document.createElement('div');
-  div.className = 'form-feedback';
-  div.style.marginTop = '16px';
-  div.style.padding = '12px 16px';
-  div.style.borderRadius = '8px';
-  div.style.fontSize = '0.9375rem';
-  div.style.display = 'none';
-  form.appendChild(div);
-  return div;
-}
-
-function showFeedback(container, message, type) {
-  container.style.display = 'block';
-  container.textContent = message;
-  if (type === 'error') {
-    container.style.background = '#fef2f2';
-    container.style.color = '#991b1b';
-    container.style.border = '1px solid #fecaca';
-  } else {
-    container.style.background = '#f0fdf4';
-    container.style.color = '#166534';
-    container.style.border = '1px solid #bbf7d0';
+    // Hero photograph drifts a little slower than the page
+    var heroImg = document.querySelector('.hero-media img');
+    if (heroImg && window.matchMedia('(min-width: 821px)').matches) {
+      gsap.to(heroImg, {
+        yPercent: -10, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+    }
   }
-}
 
-/* --------------------------------------------------------------------------
-   6. Quick Help Modal (Triggered by "Get Help Now" or Quick CTAs)
-   -------------------------------------------------------------------------- */
-function initContactModal() {
-  const triggers = document.querySelectorAll('[data-open-modal="quick-help"]');
-  const modal = document.getElementById('quickHelpModal');
-  if (!modal || !triggers.length) return;
+  function init() {
+    initHeader();
+    initForms();
+    initSmoothScroll();
+    initDrawer();
+    initMotion();
+  }
 
-  const closeBtn = modal.querySelector('.modal-close');
-  const overlay = modal.querySelector('.modal-overlay');
-
-  const openModal = (e) => {
-    if (e) e.preventDefault();
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  };
-
-  triggers.forEach((btn) => btn.addEventListener('click', openModal));
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (overlay) overlay.addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();

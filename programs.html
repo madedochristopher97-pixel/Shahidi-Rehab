@@ -3,432 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Programs &amp; Treatment | Shahidi Centre for Recovery</title>
-  <meta name="description" content="Explore our continuum of addiction care: physician-led medical detox, tranquil residential treatment, flexible outpatient support, and lifelong family aftercare.">
+  <title>Programs & Treatment | Restora Centre for Recovery</title>
+  <meta name="description" content="Medical detox, residential care, outpatient therapy and aftercare at Restora Centre for Recovery in Nairobi. See what each stage involves.">
+  <meta name="theme-color" content="#00335e">
+  <link rel="icon" type="image/svg+xml" href="images/icon-blue.svg">
+  <link rel="preload" href="fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/CooperLtBT-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__animReady)document.documentElement.classList.add('reveal-off')},4000);</script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- Accessible Skip Link -->
-  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Persistent Header -->
   <header class="site-header" id="siteHeader">
-    <div class="container header-nav-wrapper">
-      <a href="index.html" class="brand-link" aria-label="Shahidi Centre for Recovery Homepage">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery Logo" class="brand-logo-img" width="160" height="48">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="Restora Centre for Recovery home">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" class="brand-logo on-light" width="152" height="46">
+        <img src="images/logo-white.svg" alt="" class="brand-logo on-dark" width="153" height="46">
       </a>
-
-      <!-- Desktop Nav Pills (Active item has outline pill) -->
-      <nav class="main-nav" aria-label="Primary Navigation">
+      <nav class="main-nav" aria-label="Primary">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="programs.html" class="nav-link active" aria-current="page">Programs &amp; Treatment</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="programs.html" class="nav-link active" aria-current="page">Programs</a>
         <a href="admissions.html" class="nav-link">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="resources.html" class="nav-link">Families</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
-
-      <!-- Persistent CTAs -->
       <div class="header-actions">
-        <a href="tel:+254712345678" class="header-phone-link" aria-label="Call our 24/7 confidential helpline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>+254 712 345 678</span>
-        </a>
-        <a href="#quickHelpModal" class="btn-get-help" data-open-modal="quick-help" id="headerGetHelpBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          <span>Get Help Now</span>
-        </a>
-        <button class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" id="mobileNavToggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+        <a href="tel:+254795180704" class="header-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+254 795 180 704</span></a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Navigation -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Menu">
+  <div class="drawer-overlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
     <div>
-      <div class="mobile-drawer-header">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" height="40" width="130">
-        <button class="mobile-drawer-close" aria-label="Close navigation menu" id="mobileDrawerClose">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+      <div class="drawer-head">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" width="152" height="46">
+        <button class="drawer-close" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
-      <nav class="mobile-drawer-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="programs.html" class="nav-link active">Programs &amp; Treatment</a>
-        <a href="admissions.html" class="nav-link">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+      <nav class="drawer-nav" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html" class="active" aria-current="page">Programs</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="resources.html">Families</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="mobile-drawer-footer">
-      <a href="tel:+254712345678" class="btn btn-secondary btn-sm" style="width:100%">Call 24/7 Helpline</a>
-      <a href="https://wa.me/254712345678" target="_blank" rel="noopener" class="btn btn-green btn-sm" style="width:100%">Chat on WhatsApp</a>
+    <div class="drawer-foot">
+      <a href="tel:+254795180704" class="btn btn-navy btn-block"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+      <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline btn-block" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp us</span></a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main id="mainContent">
+  <main id="main">
 
-    <!-- 1. HERO FRAMING TREATMENT AS A JOURNEY, NOT A MENU -->
-    <section class="page-hero" aria-label="Programs Introduction">
+    <section class="page-hero">
       <div class="container">
-        <div class="page-hero-content">
-          <span class="section-tag">A Structured Continuum</span>
-          <h1 class="page-hero-title">Treatment Is a Journey, Not a Menu</h1>
-          <p class="page-hero-sub">
-            True recovery is not a rigid list of disconnected services. It is a seamless clinical journey tailored to your unique biology, history, and goals—progressing safely from initial medical detox to deep residential healing, social re-entry, and enduring aftercare.
-          </p>
-        </div>
+        <h1 data-reveal data-hero>Treatment, one stage at a time.</h1>
+        <p data-reveal data-hero>Your assessment decides where you start. Here is what each stage involves.</p>
       </div>
     </section>
 
-    <!-- 2. LEVELS OF CARE VISUAL JOURNEY (Plain Language Explanations) -->
-    <section class="section section-bg-warm" aria-labelledby="careJourneyTitle">
+    <section class="section" aria-label="Treatment stages">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">The Continuum of Care</span>
-          <h2 id="careJourneyTitle" class="section-title">Step-by-Step Path to Healing</h2>
-          <p class="section-desc">We explain every clinical phase in straightforward language so you and your loved ones always know what to expect and feel secure at every turn.</p>
-        </div>
-
-        <div class="journey-strip">
-          <div class="journey-step-card">
-            <span class="journey-step-num">Step 01</span>
-            <h4>Medical Detox</h4>
-            <p class="journey-step-desc">
-              <strong>Medical Detox</strong> is the supervised process of safely cleansing substances from your system. Our doctors and nurses administer gentle, FDA-approved medications around the clock so you don't suffer severe withdrawal discomfort.
-            </p>
-            <a href="#detox" class="journey-step-link">Detox Details &darr;</a>
+        <article class="program split" id="detox">
+          <div class="split-media" data-reveal>
+            <img src="images/clinic-facility.webp" alt="A clean, comfortable medical detox room" width="1400" height="934" loading="lazy" decoding="async">
           </div>
-
-          <div class="journey-step-card">
-            <span class="journey-step-num">Step 02</span>
-            <h4>Residential Care</h4>
-            <p class="journey-step-desc">
-              <strong>Residential Treatment</strong> means living on-site at our Karen sanctuary for 30 to 90 days. Free from daily temptations and stress, you participate in daily individual therapy, group counseling, yoga, and healthy meals.
-            </p>
-            <a href="#residential" class="journey-step-link">Residential Details &darr;</a>
-          </div>
-
-          <div class="journey-step-card">
-            <span class="journey-step-num">Step 03</span>
-            <h4>Outpatient &amp; IOP</h4>
-            <p class="journey-step-desc">
-              <strong>Intensive Outpatient (IOP)</strong> allows you to sleep in your own home while attending scheduled therapy sessions several times a week. It bridges full residential care with the realities of daily family or work life.
-            </p>
-            <a href="#outpatient" class="journey-step-link">Outpatient Details &darr;</a>
-          </div>
-
-          <div class="journey-step-card">
-            <span class="journey-step-num">Step 04</span>
-            <h4>Continuing Aftercare</h4>
-            <p class="journey-step-desc">
-              <strong>Aftercare</strong> is our lifelong partnership with you. Through weekly alumni meetings, therapist check-ins, and crisis support, we help you navigate milestones, celebrate victories, and maintain lasting sobriety.
-            </p>
-            <a href="#aftercare" class="journey-step-link">Aftercare Details &darr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. INDIVIDUAL PROGRAM DETAIL SECTIONS -->
-    <section class="section" id="programDetails" aria-label="Individual Program In-Depth Details">
-      <div class="container">
-
-        <!-- Program 1: Medical Detox -->
-        <article class="program-detail-card" id="detox">
-          <img src="images/clinic-facility.jpg" alt="Comfortable medical detox suite at Shahidi Centre" class="program-detail-img" width="1600" height="1066" loading="lazy">
-          <div class="program-detail-content">
-            <span class="badge badge-blue" style="width:fit-content">Level 1 · Physical Stabilization</span>
-            <h3>Physician-Monitored Medical Detox</h3>
-            <p>
-              Withdrawal from alcohol, opioids, or benzodiazepines can feel physically and mentally overwhelming when attempted alone. At Shahidi, you are never alone. Our licensed psychiatrists and nursing staff monitor your vitals, sleep, and emotional wellbeing 24/7.
-            </p>
-            <div style="margin: var(--space-2) 0">
-              <p><strong>Who it's for:</strong> Individuals experiencing physical dependency, acute alcohol withdrawal, prescription medication dependence, or opioid use disorder needing immediate medical clearance.</p>
-              <p><strong>Therapies used:</strong> Pharmacological stabilization, electrolyte and nutrient repletion, supportive counseling, and gentle rest therapies.</p>
-              <p><strong>What a day looks like:</strong> Regular vital checks, wholesome chef-prepared broth and light meals, soothing herbal teas, quiet private recovery room, and gentle conversations with our caring medical team.</p>
-            </div>
-            <a href="admissions.html" class="btn btn-primary btn-sm" style="width:fit-content">Inquire About Detox Intake</a>
+          <div class="split-text" data-reveal>
+            <span class="kicker-num">Stage 1</span>
+            <h2>Medical detox</h2>
+            <p>Stopping alcohol, opioids or sedatives can be dangerous without medical support. Our doctors and nurses monitor you and ease withdrawal symptoms so you stay safe.</p>
+            <dl class="program-meta">
+              <div><dt>For</dt><dd>People who are physically dependent on alcohol, opioids or prescription sedatives.</dd></div>
+              <div><dt>Includes</dt><dd>24-hour monitoring, medication to ease withdrawal, nutrition and rest.</dd></div>
+              <div><dt>Length</dt><dd>Set by your doctor, based on your assessment.</dd></div>
+            </dl>
+            <a href="admissions.html" class="btn btn-navy">Ask about detox</a>
           </div>
         </article>
-
-        <!-- Program 2: Residential Treatment -->
-        <article class="program-detail-card" id="residential">
-          <img src="images/facility-gardens.jpg" alt="Sanctuary grounds for residential recovery" class="program-detail-img" width="1920" height="1080" loading="lazy">
-          <div class="program-detail-content">
-            <span class="badge badge-green" style="width:fit-content">Level 2 · Core Inpatient Sanctuary</span>
-            <h3>Comprehensive Residential Inpatient Program</h3>
-            <p>
-              Residential care is where deep, foundational healing takes place. With standard 30, 60, or 90-day stays, you reside in a serene, private room with access to our peaceful garden grounds, gym, meditation hall, and organic dining.
-            </p>
-            <div style="margin: var(--space-2) 0">
-              <p><strong>Who it's for:</strong> Individuals who need a dedicated, supportive environment away from toxic social circles, high-stress triggers, or access to substances to break chronic relapse cycles.</p>
-              <p><strong>Therapies used:</strong> Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), somatic nervous system regulation, expressive art therapy, and dual-diagnosis psychiatric care.</p>
-              <p><strong>What a day looks like:</strong> Gentle morning mindfulness and yoga, farm-fresh breakfast, one-on-one psychotherapy, group psychoeducation, garden walking, fitness, and evening community reflection.</p>
-            </div>
-            <a href="admissions.html" class="btn btn-primary btn-sm" style="width:fit-content">View Admissions Steps</a>
+        <article class="program split reverse" id="residential">
+          <div class="split-media" data-reveal>
+            <img src="images/facility-gardens.webp" alt="Garden at the centre" width="1376" height="768" loading="lazy" decoding="async">
+          </div>
+          <div class="split-text" data-reveal>
+            <span class="kicker-num">Stage 2</span>
+            <h2>Residential care</h2>
+            <p>Stay at the centre for 30, 60 or 90 days. You get time away from everyday pressures, with structured therapy and a supportive community.</p>
+            <dl class="program-meta">
+              <div><dt>For</dt><dd>People who need distance from triggers or have relapsed before.</dd></div>
+              <div><dt>Includes</dt><dd>Individual therapy, group sessions, mental health care, yoga, mindfulness and healthy meals.</dd></div>
+              <div><dt>A typical day</dt><dd>Morning mindfulness, therapy sessions, time in the garden and an evening reflection.</dd></div>
+            </dl>
+            <a href="admissions.html" class="btn btn-navy">See how admission works</a>
           </div>
         </article>
-
-        <!-- Program 3: Outpatient & IOP -->
-        <article class="program-detail-card" id="outpatient">
-          <img src="images/support-group.jpg" alt="Outpatient group discussion in session" class="program-detail-img" width="1600" height="961" loading="lazy">
-          <div class="program-detail-content">
-            <span class="badge badge-blue" style="width:fit-content">Level 3 · Flexible Community Transition</span>
-            <h3>Outpatient &amp; Intensive Outpatient (IOP)</h3>
-            <p>
-              Recovery must translate into the real world. Our Outpatient programs offer evidence-based clinical therapy with the flexibility to sleep at home, continue work, or attend school.
-            </p>
-            <div style="margin: var(--space-2) 0">
-              <p><strong>Who it's for:</strong> Graduates of our residential program transitioning home, or individuals with moderate substance misuse and strong home stability who cannot take extended leave from work.</p>
-              <p><strong>Structure:</strong> 3 to 5 sessions weekly (morning or evening tracks), combining individual psychotherapy, peer group dynamic workshops, and family check-ins.</p>
-            </div>
-            <a href="contact.html" class="btn btn-secondary btn-sm" style="width:fit-content">Discuss Outpatient Options</a>
+        <article class="program split" id="outpatient">
+          <div class="split-media" data-reveal>
+            <img src="images/support-group.webp" alt="A group therapy session" width="1400" height="840" loading="lazy" decoding="async">
+          </div>
+          <div class="split-text" data-reveal>
+            <span class="kicker-num">Stage 3</span>
+            <h2>Outpatient</h2>
+            <p>Therapy several times a week while you live at home. It helps you keep working or studying while you build new habits.</p>
+            <dl class="program-meta">
+              <div><dt>For</dt><dd>People moving home after residential care, or those with a stable home who cannot take extended leave.</dd></div>
+              <div><dt>Includes</dt><dd>Individual therapy, peer groups and family check-ins.</dd></div>
+              <div><dt>Schedule</dt><dd>3 to 5 sessions a week, morning or evening.</dd></div>
+            </dl>
+            <a href="contact.html" class="btn btn-navy">Discuss outpatient care</a>
           </div>
         </article>
-
-        <!-- Program 4: Supported Aftercare -->
-        <article class="program-detail-card" id="aftercare">
-          <img src="images/friends-celebrating.jpg" alt="Alumni celebrating sober milestones and community connection" class="program-detail-img" width="1600" height="1066" loading="lazy">
-          <div class="program-detail-content">
-            <span class="badge badge-green" style="width:fit-content">Level 4 · Lifelong Freedom</span>
-            <h3>Continuing Care &amp; Alumni Fellowship</h3>
-            <p>
-              The day you graduate from Shahidi is just the beginning of a lifelong sisterhood and brotherhood. Our aftercare network provides structure, accountability, and genuine fellowship for the years ahead.
-            </p>
-            <div style="margin: var(--space-2) 0">
-              <p><strong>Includes:</strong> Weekly moderated alumni recovery circles, one-on-one check-ins with your primary therapist, sober social events, emergency trigger hotlines, and peer mentorship.</p>
-              <p><strong>Relapse response:</strong> If a slip or challenge occurs, we respond with immediate empathy and rapid recalibration, never punitive judgment or abandonment.</p>
-            </div>
-            <a href="contact.html" class="btn btn-primary btn-sm" style="width:fit-content">Connect With Aftercare Team</a>
+        <article class="program split reverse" id="aftercare">
+          <div class="split-media" data-reveal>
+            <img src="images/friends-celebrating.webp" alt="Friends celebrating together" width="1400" height="934" loading="lazy" decoding="async">
+          </div>
+          <div class="split-text" data-reveal>
+            <span class="kicker-num">Stage 4</span>
+            <h2>Aftercare</h2>
+            <p>Recovery continues after you leave. We stay in touch with practical support, so you are never starting over alone.</p>
+            <dl class="program-meta">
+              <div><dt>Includes</dt><dd>Weekly alumni groups, check-ins with your therapist, peer mentors and crisis support.</dd></div>
+              <div><dt>If you slip</dt><dd>We respond with support, not judgement.</dd></div>
+            </dl>
+            <a href="contact.html" class="btn btn-navy">Speak to our aftercare team</a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- 4. FAMILY PROGRAM CALLOUT SECTION -->
-    <section class="section section-bg-warm" id="family" aria-labelledby="familyProgramTitle">
-      <div class="container">
-        <div class="feature-split">
-          <div class="feature-text-block">
-            <span class="section-tag">Whole-Family Recovery</span>
-            <h2 id="familyProgramTitle">Because Addiction Impacts the Entire Family</h2>
-            <p>
-              When an individual battles addiction, parents, partners, siblings, and children often carry silent wounds: chronic anxiety, broken trust, guilt, and emotional exhaustion.
-            </p>
-            <p>
-              Our dedicated Family Program is designed to heal the collective family system. We guide loved ones through educational workshops that explain the science of addiction, teach healthy boundary-setting, and facilitate safe, facilitated reconciliation conversations.
-            </p>
-            <ul class="feature-bullet-list">
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Weekend Family Workshops:</strong> Compassionate psychoeducation explaining neurobiology and dismantling guilt.</span>
-              </li>
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Facilitated Reconciliation Sessions:</strong> Safe dialogue with your loved one guided by certified family therapists.</span>
-              </li>
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Home Transition Planning:</strong> Concrete strategies to prepare a peaceful, supportive sober living environment.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="feature-image-wrapper">
-            <img src="images/warm-embrace.jpg" alt="A family embrace symbolizing healing, forgiveness, and renewal" class="feature-image" width="1400" height="1120" loading="lazy">
-            <div class="feature-caption-badge">
-              <span class="feature-badge-title">Healing Relationships Together</span>
-              <span class="feature-badge-desc">Restoring mutual trust and peace across generations</span>
-            </div>
-          </div>
+    <section class="section section-alt defer" id="family" aria-labelledby="familyTitle">
+      <div class="container split">
+        <div class="split-text" data-reveal>
+          <h2 id="familyTitle">Addiction affects the whole family</h2>
+          <p>Parents, partners and children often carry worry, guilt and broken trust. Our family program helps everyone understand addiction and rebuild together.</p>
+          <ul class="checklist">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Weekend workshops</strong> on how addiction works and how to set healthy boundaries.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Joint sessions</strong> with a trained family therapist, when you are ready.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Planning for home</strong> so the return is calm and supported.</span></li>
+          </ul>
+        </div>
+        <div class="split-media" data-reveal>
+          <img src="images/warm-embrace.webp" alt="Two people sharing a warm embrace" width="1400" height="1120" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- 5. SHORT FAQ SNIPPET (Accordion) -->
-    <section class="section" id="faq" aria-labelledby="programFaqTitle">
+    <section class="section defer" id="faq" aria-labelledby="faqTitle">
       <div class="container container-narrow">
-        <div class="section-header">
-          <span class="section-tag">Common Questions</span>
-          <h2 id="programFaqTitle" class="section-title">Frequently Asked Questions About Treatment</h2>
-        </div>
-
-        <div class="faq-accordion">
-          <div class="faq-item active">
-            <button class="faq-question-btn" aria-expanded="true">
-              <span>How long does the residential program typically last?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Most residents benefit from our 30-day, 60-day, or 90-day residential tracks. The recommended duration depends on your individual clinical assessment, the substance involved, and any co-occurring psychological conditions. We regularly reassess progress in consultation with you.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" aria-expanded="false">
-              <span>Will my detox be painful or dangerous?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Under our medical detox protocol, safety and comfort are prioritized. Our medical team uses evidence-based medications to alleviate withdrawal symptoms such as tremors, insomnia, nausea, and anxiety, ensuring a safe, dignified experience.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" aria-expanded="false">
-              <span>Can my family visit while I am in treatment?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. Following an initial 7-day stabilization period, family visits and scheduled family therapy sessions are encouraged on weekends, supporting connection without disrupting clinical focus.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" aria-expanded="false">
-              <span>How do you protect my privacy and employment status?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Confidentiality is protected by medical ethics and Kenya's Data Protection Act. We never disclose your admission or medical records to employers, insurers, or third parties without your explicit, written consent.</p>
-            </div>
-          </div>
-        </div>
+        <div class="section-head" data-reveal><h2 id="faqTitle">Common questions</h2></div>
+        <div class="faq" data-reveal>
+        <details open>
+          <summary>How long is the residential program?</summary>
+          <div class="answer"><p>Most people stay 30, 60 or 90 days. We recommend a length after your assessment and review it with you as you progress.</p></div>
+        </details>
+        <details>
+          <summary>Will detox be painful?</summary>
+          <div class="answer"><p>Safety and comfort come first. Our medical team uses medication to ease symptoms such as tremors, nausea, anxiety and poor sleep.</p></div>
+        </details>
+        <details>
+          <summary>Can my family visit?</summary>
+          <div class="answer"><p>Yes. After an initial 7-day settling period, family visits and joint sessions are welcome on weekends.</p></div>
+        </details>
+        <details>
+          <summary>Will my employer find out?</summary>
+          <div class="answer"><p>No. We never share your admission or medical records with employers, insurers or anyone else without your written consent.</p></div>
+        </details>
+      </div>
       </div>
     </section>
 
-    <!-- 6. FINAL CTA BAND (Directly above footer, Reference Image 2 style) -->
-    <section class="final-cta-band-wrapper" aria-label="Call to Action">
-      <div class="container">
-        <div class="final-cta-band">
-          <div class="final-cta-content">
-            <h2 class="final-cta-headline">Ready to Discuss the Right Program for You?</h2>
-            <p class="final-cta-subtext">
-              Reach out to our intake team today. We will listen to your story, answer questions plainly, and recommend the gentlest, most effective path forward.
-            </p>
-            <a href="admissions.html" class="btn final-cta-btn btn-lg" id="programsGoToAdmissionsBtn">
-              <span>View Admissions Process</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
+    <section class="cta-band" aria-labelledby="ctaTitle">
+      <div class="container cta-inner">
+        <div data-reveal>
+          <h2 id="ctaTitle">Not sure which stage fits?</h2>
+          <p>Tell us what is happening and we will recommend a starting point. There is no pressure and no obligation.</p>
+        </div>
+        <div class="cta-actions" data-reveal>
+          <a href="tel:+254795180704" class="btn btn-light btn-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+          <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline-light btn-lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Message on WhatsApp</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- PERSISTENT FOOTER -->
-  <footer class="site-footer" id="siteFooter">
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" class="footer-brand-logo" width="160" height="48">
-          <p class="footer-tagline">"Witnessing Recovery, Transforming Lives."</p>
-          <p class="footer-mission-snippet">A compassionate, licensed addiction rehabilitation sanctuary providing individualized medical detox, residential care, and lifelong family support.</p>
-          <div class="footer-social-row" aria-label="Social media links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-          </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-white.svg" alt="Restora Centre for Recovery" width="147" height="44" loading="lazy">
+          <p>Addiction treatment and family support on Old Namanga Road, Nairobi.</p>
         </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
+        <div>
+          <h4>Explore</h4>
           <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="about.html#team">Our Clinical Team</a></li>
-            <li><a href="about.html#facility">Facility &amp; Grounds</a></li>
-            <li><a href="about.html#philosophy">Clinical Philosophy</a></li>
-            <li><a href="resources.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="resources.html">For families</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Programs</h4>
+        <div>
+          <h4>Treatment</h4>
           <ul class="footer-links">
-            <li><a href="programs.html#detox">Medical Detox</a></li>
-            <li><a href="programs.html#residential">Residential Care</a></li>
-            <li><a href="programs.html#outpatient">Outpatient &amp; IOP</a></li>
-            <li><a href="programs.html#family">Family Healing Program</a></li>
-            <li><a href="programs.html#aftercare">Lifelong Aftercare</a></li>
-            <li><a href="admissions.html">Admissions Process</a></li>
+            <li><a href="programs.html#detox">Medical detox</a></li>
+            <li><a href="programs.html#residential">Residential care</a></li>
+            <li><a href="programs.html#outpatient">Outpatient</a></li>
+            <li><a href="programs.html#aftercare">Aftercare</a></li>
+            <li><a href="programs.html#family">Family program</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Confidential Contact</h4>
-          <ul class="footer-contact-list">
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <div><strong>Phone (24/7):</strong><br><a href="tel:+254712345678">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              <div><strong>WhatsApp:</strong><br><a href="https://wa.me/254712345678" target="_blank" rel="noopener">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <div><strong>Email:</strong><br><a href="mailto:care@shahidirecovery.co.ke">care@shahidirecovery.co.ke</a></div>
-            </li>
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer-contact">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span class="label">Phone, 24/7</span><a href="tel:+254795180704">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div><span class="label">WhatsApp</span><a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." target="_blank" rel="noopener">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><span class="label">Email</span><a href="mailto:restoracentreforrecovery@gmail.com">restoracentreforrecovery@gmail.com</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><span class="label">Location</span>Old Namanga Road, Nairobi</div></li>
           </ul>
         </div>
       </div>
-
-      <div class="footer-crisis-note" role="alert">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        <span>
-          <strong>24/7 Immediate Crisis Support:</strong> If you or someone you care about is experiencing an acute medical emergency, overdose risk, or severe psychological crisis, please call emergency services immediately or dial our confidential hotline at <a href="tel:+254712345678" style="color:inherit;text-decoration:underline;">+254 712 345 678</a>.
-        </span>
+      <div class="footer-note">
+        <p><strong>In an emergency</strong> or if someone has overdosed, call <a href="tel:999">999</a> or <a href="tel:112">112</a> straight away.</p>
       </div>
-
-      <div class="footer-bottom-bar">
-        <p>&copy; 2026 Shahidi Centre for Recovery. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="privacy.html">Privacy &amp; Confidentiality Policy</a>
-          <a href="terms.html">Terms &amp; Admissions Conditions</a>
-          <a href="contact.html">Find Our Location</a>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Restora Centre for Recovery</p>
+        <nav aria-label="Legal">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
       </div>
     </div>
   </footer>
-
-  <!-- Quick Help Modal -->
-  <div class="modal-wrapper" id="quickHelpModal" role="dialog" aria-modal="true" aria-labelledby="modalHelpTitle">
-    <div class="modal-overlay"></div>
-    <div class="modal-container">
-      <div class="modal-header">
-        <div>
-          <span class="badge badge-green" style="margin-bottom:6px">100% Confidential</span>
-          <h3 id="modalHelpTitle">We're Here When You're Ready</h3>
-        </div>
-        <button class="modal-close" aria-label="Close dialog">&times;</button>
-      </div>
-      <p style="font-size:0.9375rem; color:var(--color-text-muted); margin-bottom:12px">
-        Taking the first step takes courage. Connect with our caring clinical intake team through your preferred channel:
-      </p>
-      <div class="modal-options-list">
-        <a href="tel:+254712345678" class="modal-option-btn">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Call Our 24/7 Helpline</span>
-            <span class="modal-option-sub">+254 712 345 678 · Direct, private consultation</span>
-          </div>
-        </a>
-        <a href="https://wa.me/254712345678?text=Hello%20Shahidi%20Team%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20recovery%20programs." target="_blank" rel="noopener" class="modal-option-btn whatsapp">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Chat Discreetly via WhatsApp</span>
-            <span class="modal-option-sub">Fast, secure replies from an intake specialist</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
