@@ -3,462 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions &amp; Intake | Shahidi Centre for Recovery</title>
-  <meta name="description" content="Here is exactly what happens when you reach out to Shahidi Centre: our gentle 4-step admissions process, transparent insurance guidance, and what to bring.">
+  <title>Admissions | Restora Centre for Recovery</title>
+  <meta name="description" content="How admission to Restora Centre for Recovery works: four simple steps, clear costs and what to bring. Call +254 795 180 704.">
+  <meta name="theme-color" content="#00335e">
+  <link rel="icon" type="image/svg+xml" href="images/icon-blue.svg">
+  <link rel="preload" href="fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/CooperLtBT-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__animReady)document.documentElement.classList.add('reveal-off')},4000);</script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- Accessible Skip Link -->
-  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Persistent Header -->
   <header class="site-header" id="siteHeader">
-    <div class="container header-nav-wrapper">
-      <a href="index.html" class="brand-link" aria-label="Shahidi Centre for Recovery Homepage">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery Logo" class="brand-logo-img" width="160" height="48">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="Restora Centre for Recovery home">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" class="brand-logo on-light" width="152" height="46">
+        <img src="images/logo-white.svg" alt="" class="brand-logo on-dark" width="153" height="46">
       </a>
-
-      <!-- Desktop Nav Pills (Active item has outline pill) -->
-      <nav class="main-nav" aria-label="Primary Navigation">
+      <nav class="main-nav" aria-label="Primary">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="programs.html" class="nav-link">Programs &amp; Treatment</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="programs.html" class="nav-link">Programs</a>
         <a href="admissions.html" class="nav-link active" aria-current="page">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="resources.html" class="nav-link">Families</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
-
-      <!-- Persistent CTAs -->
       <div class="header-actions">
-        <a href="tel:+254712345678" class="header-phone-link" aria-label="Call our 24/7 confidential helpline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>+254 712 345 678</span>
-        </a>
-        <a href="#quickHelpModal" class="btn-get-help" data-open-modal="quick-help" id="headerGetHelpBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          <span>Get Help Now</span>
-        </a>
-        <button class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" id="mobileNavToggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+        <a href="tel:+254795180704" class="header-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+254 795 180 704</span></a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Navigation -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Menu">
+  <div class="drawer-overlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
     <div>
-      <div class="mobile-drawer-header">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" height="40" width="130">
-        <button class="mobile-drawer-close" aria-label="Close navigation menu" id="mobileDrawerClose">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+      <div class="drawer-head">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" width="152" height="46">
+        <button class="drawer-close" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
-      <nav class="mobile-drawer-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="programs.html" class="nav-link">Programs &amp; Treatment</a>
-        <a href="admissions.html" class="nav-link active">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+      <nav class="drawer-nav" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="admissions.html" class="active" aria-current="page">Admissions</a>
+        <a href="resources.html">Families</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="mobile-drawer-footer">
-      <a href="tel:+254712345678" class="btn btn-secondary btn-sm" style="width:100%">Call 24/7 Helpline</a>
-      <a href="https://wa.me/254712345678" target="_blank" rel="noopener" class="btn btn-green btn-sm" style="width:100%">Chat on WhatsApp</a>
+    <div class="drawer-foot">
+      <a href="tel:+254795180704" class="btn btn-navy btn-block"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+      <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline btn-block" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp us</span></a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main id="mainContent">
+  <main id="main">
 
-    <!-- 1. REASSURING, PROCESS-FOCUSED HERO -->
-    <section class="page-hero" aria-label="Admissions Introduction">
+    <section class="page-hero">
       <div class="container">
-        <div class="page-hero-content">
-          <span class="section-tag">Zero Pressure · Total Privacy</span>
-          <h1 class="page-hero-title">Here's Exactly What Happens When You Reach Out</h1>
-          <p class="page-hero-sub">
-            Reaching out for help is often accompanied by apprehension. We want you to feel completely informed and at ease. You will not face sales pressure or invasive interrogations—only an attentive listener who cares about your safety.
-          </p>
+        <h1 data-reveal data-hero>What happens when you reach out.</h1>
+        <p data-reveal data-hero>No pressure and no judgement. Here are the four steps, so nothing comes as a surprise.</p>
+        <div class="btn-row" data-reveal data-hero>
+          <a href="tel:+254795180704" class="btn btn-navy btn-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+          <a href="#enquiry" class="btn btn-outline btn-lg">Send an enquiry</a>
         </div>
       </div>
     </section>
 
-    <!-- 2. NUMBERED STEP-BY-STEP ADMISSIONS PROCESS -->
     <section class="section" aria-labelledby="stepsTitle">
       <div class="container container-narrow">
-        <div class="section-header">
-          <span class="section-tag">The 4-Step Process</span>
-          <h2 id="stepsTitle" class="section-title">From Your First Call to Settling In</h2>
-          <p class="section-desc">Every step of our intake is designed to remove friction, protect your confidentiality, and ensure that medical and emotional needs are prioritized.</p>
+        <div class="section-head" data-reveal><h2 id="stepsTitle">Four steps to admission</h2></div>
+        <ol class="steps">
+          <li class="step" data-reveal><div><h3>Call or message us</h3><p>You will speak with a trained intake counsellor. Ask anything you like. There is no obligation to continue.</p></div></li>
+          <li class="step" data-reveal><div><h3>Medical and clinical assessment</h3><p>Our clinical team talks through your health, substance use and mental wellbeing, then plans your care with you.</p></div></li>
+          <li class="step" data-reveal><div><h3>Costs and arrangements</h3><p>We explain fees clearly, work with your insurer where possible, and help arrange transport if you are travelling.</p></div></li>
+          <li class="step" data-reveal><div><h3>Arrival</h3><p>Our nurses welcome you, do a gentle health check and show you to your room. You can rest before treatment begins.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt defer" id="insurance" aria-labelledby="costTitle">
+      <div class="container split">
+        <div class="split-text" data-reveal>
+          <h2 id="costTitle">Costs, explained plainly</h2>
+          <p>We tell you the full cost before you commit. There are no surprise charges.</p>
+          <ul class="checklist">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Insurance.</strong> We check your cover confidentially and tell you what it pays for.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Residential fees</strong> cover your room, medical care, therapy and meals.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Paying privately?</strong> Payment plans are available.</span></li>
+          </ul>
         </div>
-
-        <div class="process-steps-list">
-          <!-- Step 1 -->
-          <div class="process-step-item">
-            <div class="step-number-badge">1</div>
-            <div class="step-content">
-              <h3>Confidential Initial Call or Message</h3>
-              <p>
-                When you call or WhatsApp our helpline, you speak directly with an experienced clinical intake counselor. In this unhurried conversation, we listen to your situation, answer initial questions, and discuss whether Shahidi is the right clinical fit for your needs. There is no obligation to commit.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="process-step-item">
-            <div class="step-number-badge">2</div>
-            <div class="step-content">
-              <h3>Comprehensive Clinical &amp; Medical Assessment</h3>
-              <p>
-                Our Medical Director and psychological team conduct a confidential pre-admission screening. We evaluate current substance use patterns, medical history, physical symptoms, and any co-occurring anxiety or mood conditions to draft your individualized detox and therapy roadmap.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="process-step-item">
-            <div class="step-number-badge">3</div>
-            <div class="step-content">
-              <h3>Transparent Financial Planning &amp; Travel Arrangements</h3>
-              <p>
-                We review program costs clearly with zero surprise fees. Our team coordinates with your private insurance provider where applicable or outlines transparent private-pay schedules. For residents arriving from outside Nairobi or abroad, we coordinate discreet airport pickup and transport.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="process-step-item">
-            <div class="step-number-badge">4</div>
-            <div class="step-content">
-              <h3>Warm Arrival &amp; Compassionate Intake</h3>
-              <p>
-                Upon arriving at our Karen sanctuary, you are welcomed with warmth and hot tea. Our nursing staff conducts a gentle medical check-in, shows you to your private room, and allows you time to rest and orient yourself before beginning your treatment plan.
-              </p>
-            </div>
-          </div>
+        <div class="split-media" data-reveal>
+          <img src="images/hands-support.webp" alt="Two people holding hands in reassurance" width="1400" height="934" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- 3. INSURANCE & PAYMENT SECTION (Plain Language) -->
-    <section class="section section-bg-warm" id="insurance" aria-labelledby="insuranceTitle">
+    <section class="section defer" id="whatToBring" aria-labelledby="bringTitle">
       <div class="container">
-        <div class="feature-split">
-          <div class="feature-text-block">
-            <span class="section-tag">Plain Language Finance</span>
-            <h2 id="insuranceTitle">Insurance, Payment &amp; Financial Transparency</h2>
-            <p>
-              We believe in honest, straightforward communication about treatment costs. We will never overpromise on insurance coverage or leave you with unexpected bills after treatment.
-            </p>
-            <ul class="feature-bullet-list">
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Private Insurance Verification:</strong> We work with leading Kenyan and international health insurance providers. In our initial consultation, we verify benefits confidentially on your behalf.</span>
-              </li>
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>All-Inclusive Residential Rates:</strong> Our residential fees cover your private room, 24/7 medical oversight, doctor visits, individual therapy, group counseling, chef-prepared meals, and facility amenities.</span>
-              </li>
-              <li class="feature-bullet-item">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Flexible Self-Pay Options:</strong> For families self-funding care, we structure transparent phased payment arrangements.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="feature-image-wrapper">
-            <img src="images/hands-support.jpg" alt="A caring, supportive hand representing honest communication" class="feature-image" width="1600" height="1066" loading="lazy">
-            <div class="feature-caption-badge">
-              <span class="feature-badge-title">Zero Hidden Fees</span>
-              <span class="feature-badge-desc">Every financial item explained clearly before you ever arrive</span>
-            </div>
-          </div>
+        <div class="section-head" data-reveal>
+          <h2 id="bringTitle">What to bring</h2>
+          <p>We provide bedding, towels, meals and clinical supplies.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- 4. PRACTICAL INFO: WHAT TO BRING & PREPARE -->
-    <section class="section" id="whatToBring" aria-labelledby="whatToBringTitle">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Preparation Guide</span>
-          <h2 id="whatToBringTitle" class="section-title">Preparing for Your Stay: What to Bring</h2>
-          <p class="section-desc">Our sanctuary provides all linens, personal towels, nutritious meals, and clinical supplies. Here is a practical guide to help you pack comfortably.</p>
-        </div>
-
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <h3>What to Bring</h3>
-            <ul style="list-style:disc; margin-left:20px; font-size:0.9375rem; color:var(--color-text-muted); line-height:1.7">
-              <li>7–10 days of comfortable, casual clothing (wash facilities available)</li>
-              <li>Walking shoes/sneakers and light workout gear for garden strolls and yoga</li>
-              <li>Valid National ID or Passport</li>
-              <li>Health insurance cards (if applicable)</li>
-              <li>Current prescribed medications in their original pharmacy bottles</li>
-              <li>Personal journal, favourite books, or reading material</li>
+        <div class="cols">
+          <div class="col rule-top" data-reveal>
+            <h3>Bring</h3>
+            <ul>
+              <li>7 to 10 days of comfortable clothes</li>
+              <li>Walking shoes and light exercise wear</li>
+              <li>National ID or passport</li>
+              <li>Insurance card, if you have one</li>
+              <li>Prescribed medication in its original packaging</li>
+              <li>A journal or books</li>
             </ul>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon-box" style="background:#fee2e2; color:#b91c1c">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-            </div>
-            <h3>What to Leave at Home</h3>
-            <ul style="list-style:disc; margin-left:20px; font-size:0.9375rem; color:var(--color-text-muted); line-height:1.7">
-              <li>Alcohol, non-prescribed substances, or unsealed medications</li>
-              <li>Alcohol-based perfumes, colognes, or mouthwashes</li>
-              <li>Weapons or sharp objects of any kind</li>
-              <li>Excessive jewelry, high cash amounts, or irreplaceable valuables</li>
-              <li>Work laptops during the initial 7-day stabilization phase (stored securely in centre safe)</li>
+          <div class="col rule-top" data-reveal>
+            <h3>Leave at home</h3>
+            <ul>
+              <li>Alcohol and non-prescribed substances</li>
+              <li>Alcohol-based perfume or mouthwash</li>
+              <li>Weapons or sharp objects</li>
+              <li>Valuables and large amounts of cash</li>
+              <li>Work laptops for the first 7 days</li>
             </ul>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            </div>
-            <h3>Communication &amp; Visitors</h3>
-            <ul style="list-style:disc; margin-left:20px; font-size:0.9375rem; color:var(--color-text-muted); line-height:1.7">
-              <li>During the first 7 days, residents disconnect from outside digital distractions to settle their nervous systems</li>
-              <li>Designated phone check-in hours with loved ones occur twice weekly thereafter</li>
-              <li>Weekend visiting hours are warmly welcomed following clinical stabilization</li>
-              <li>Family therapy sessions can be scheduled on-site or via secure video link</li>
+          <div class="col rule-top" data-reveal>
+            <h3>Calls and visits</h3>
+            <ul>
+              <li>For the first 7 days, you rest without outside contact</li>
+              <li>After that, set phone times with loved ones twice a week</li>
+              <li>Weekend visits are welcome once you are settled</li>
+              <li>Family sessions can be held on site or by video</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. ADMISSIONS FAQ ACCORDION -->
-    <section class="section section-bg-warm" aria-labelledby="admissionsFaqTitle">
+    <section class="section section-alt defer" aria-labelledby="admFaqTitle">
       <div class="container container-narrow">
-        <div class="section-header">
-          <span class="section-tag">Common Inquiries</span>
-          <h2 id="admissionsFaqTitle" class="section-title">Admissions Questions Answered</h2>
-        </div>
-
-        <div class="faq-accordion">
-          <div class="faq-item active">
-            <button class="faq-question-btn" aria-expanded="true">
-              <span>Can I be admitted on the same day that I call?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. When bed capacity permits and medical assessment is cleared, we regularly arrange same-day admissions for individuals in acute need. Call us immediately so our nursing team can prepare your room.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" aria-expanded="false">
-              <span>What if my loved one is resistant to coming to rehab?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Resistance is common and rooted in fear of withdrawal or shame. We coach families on compassionate intervention strategies that replace blame with love and firm boundaries, often helping loved ones voluntarily choose care.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" aria-expanded="false">
-              <span>Are rooms private or shared?</span>
-              <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>We provide private en-suite bedrooms to afford every resident deep rest and dignity. A limited number of semi-private rooms are also available for residents who thrive with peer companionship.</p>
-            </div>
-          </div>
-        </div>
+        <div class="section-head" data-reveal><h2 id="admFaqTitle">Admissions questions</h2></div>
+        <div class="faq" data-reveal>
+        <details open>
+          <summary>Can I be admitted the same day?</summary>
+          <div class="answer"><p>Often, yes. If a bed is free and you are medically cleared, same-day admission is possible. Call us as early as you can.</p></div>
+        </details>
+        <details>
+          <summary>What if my loved one refuses help?</summary>
+          <div class="answer"><p>This is common. It is usually fear or shame. We can coach you on how to talk with them without blame, and how to hold firm, loving boundaries.</p></div>
+        </details>
+        <details>
+          <summary>Are rooms private or shared?</summary>
+          <div class="answer"><p>Most residents have a private room. A limited number of shared rooms are available for people who prefer company.</p></div>
+        </details>
+      </div>
       </div>
     </section>
 
-    <!-- 6. CONFIDENTIAL ENQUIRY FORM SECTION -->
-    <section class="section" id="enquiry" aria-labelledby="enquiryFormTitle">
+    <section class="section defer" id="enquiry" aria-labelledby="enquiryTitle">
       <div class="container container-narrow">
-        <div class="form-card">
-          <div style="text-align:center; margin-bottom:var(--space-4)">
-            <span class="badge badge-green" style="margin-bottom:8px">Confidential Admissions Inquiry</span>
-            <h2 id="enquiryFormTitle">Connect With Our Admissions Coordinator</h2>
-            <p style="font-size:0.9375rem; color:var(--color-text-muted)">
-              Fill out this simple form, or reach out instantly via phone or WhatsApp. Your information is encrypted and strictly protected.
-            </p>
-          </div>
-
-          <form data-validate="true" id="admissionsInquiryForm">
-            <div class="form-group">
-              <label class="form-label" for="admFullName">Your Name or Pseudonym *</label>
-              <input type="text" id="admFullName" name="fullName" class="form-input" placeholder="e.g. John K." required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="admContact">Preferred Phone or Email *</label>
-              <input type="text" id="admContact" name="contact" class="form-input" placeholder="e.g. +254 700 000 000 or name@email.com" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="admWho">Who is this inquiry for?</label>
-              <select id="admWho" name="whoFor" class="form-select">
-                <option value="myself">For Myself</option>
-                <option value="loved_one">For a Family Member or Loved One</option>
-                <option value="professional">Professional / Clinical Referral</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="admMessage">How can we best assist you? (Optional)</label>
-              <textarea id="admMessage" name="message" class="form-textarea" placeholder="Tell us briefly about the situation, primary concerns, or preferred callback time..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg" style="width:100%" id="admSubmitBtn">
-              <span>Submit Confidential Request</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-
-            <p class="form-disclaimer text-center">
-              We respect your privacy. No information is ever shared with third parties, employers, or insurers without your written permission.
-            </p>
+        <div class="form-panel" data-reveal>
+          <h2 id="enquiryTitle">Send an enquiry</h2>
+          <p style="margin: 12px 0 28px">Prefer to write? Leave your details and we will get back to you. You can use a first name only.</p>
+          <form class="form" data-enquiry id="admissionsForm" novalidate>
+            <div class="field"><label for="admName">Your name</label><input class="input" type="text" id="admName" name="fullName" autocomplete="given-name" required></div>
+            <div class="field"><label for="admContact">Phone or email</label><input class="input" type="text" id="admContact" name="contact" autocomplete="off" placeholder="+254 or name@email.com" required></div>
+            <div class="field"><label for="admWho">Who is this for?</label>
+              <select class="select" id="admWho" name="whoFor">
+                <option value="Myself">Myself</option>
+                <option value="A family member or friend">A family member or friend</option>
+                <option value="A client (professional referral)">A client (professional referral)</option>
+              </select></div>
+            <div class="field"><label for="admMessage">Anything you would like us to know <span class="hint">(optional)</span></label><textarea class="textarea" id="admMessage" name="message"></textarea></div>
+            <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <div class="form-feedback" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn btn-navy btn-lg btn-block">Send enquiry</button>
+            <p class="form-note">Your message goes straight to our team. We never share your details without your written consent.</p>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- 7. FINAL CTA BAND (Directly above footer, Reference Image 2 style) -->
-    <section class="final-cta-band-wrapper" aria-label="Call to Action">
-      <div class="container">
-        <div class="final-cta-band">
-          <div class="final-cta-content">
-            <h2 class="final-cta-headline">Need Immediate Guidance?</h2>
-            <p class="final-cta-subtext">
-              Our clinical admissions team is on standby 24 hours a day, 7 days a week. Call or message us directly on WhatsApp.
-            </p>
-            <div style="display:flex; gap:var(--space-2); flex-wrap:wrap; justify-content:center">
-              <a href="tel:+254712345678" class="btn final-cta-btn btn-lg" id="admissionsCallHelplineBtn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Call Helpline: +254 712 345 678</span>
-              </a>
-              <a href="https://wa.me/254712345678?text=Hello%20Shahidi%20Team%2C%20I%20would%20like%20confidential%20guidance." target="_blank" rel="noopener" class="btn btn-green btn-lg" id="admissionsWhatsAppBtn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                <span>WhatsApp Admissions</span>
-              </a>
-            </div>
-          </div>
+    <section class="cta-band" aria-labelledby="ctaTitle">
+      <div class="container cta-inner">
+        <div data-reveal>
+          <h2 id="ctaTitle">Need guidance now?</h2>
+          <p>Our admissions team is available 24 hours a day. Call or message us on WhatsApp.</p>
+        </div>
+        <div class="cta-actions" data-reveal>
+          <a href="tel:+254795180704" class="btn btn-light btn-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+          <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline-light btn-lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Message on WhatsApp</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- PERSISTENT FOOTER -->
-  <footer class="site-footer" id="siteFooter">
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" class="footer-brand-logo" width="160" height="48">
-          <p class="footer-tagline">"Witnessing Recovery, Transforming Lives."</p>
-          <p class="footer-mission-snippet">A compassionate, licensed addiction rehabilitation sanctuary providing individualized medical detox, residential care, and lifelong family support.</p>
-          <div class="footer-social-row" aria-label="Social media links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-          </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-white.svg" alt="Restora Centre for Recovery" width="147" height="44" loading="lazy">
+          <p>Addiction treatment and family support on Old Namanga Road, Nairobi.</p>
         </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
+        <div>
+          <h4>Explore</h4>
           <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="about.html#team">Our Clinical Team</a></li>
-            <li><a href="about.html#facility">Facility &amp; Grounds</a></li>
-            <li><a href="about.html#philosophy">Clinical Philosophy</a></li>
-            <li><a href="resources.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="resources.html">For families</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Programs</h4>
+        <div>
+          <h4>Treatment</h4>
           <ul class="footer-links">
-            <li><a href="programs.html#detox">Medical Detox</a></li>
-            <li><a href="programs.html#residential">Residential Care</a></li>
-            <li><a href="programs.html#outpatient">Outpatient &amp; IOP</a></li>
-            <li><a href="programs.html#family">Family Healing Program</a></li>
-            <li><a href="programs.html#aftercare">Lifelong Aftercare</a></li>
-            <li><a href="admissions.html">Admissions Process</a></li>
+            <li><a href="programs.html#detox">Medical detox</a></li>
+            <li><a href="programs.html#residential">Residential care</a></li>
+            <li><a href="programs.html#outpatient">Outpatient</a></li>
+            <li><a href="programs.html#aftercare">Aftercare</a></li>
+            <li><a href="programs.html#family">Family program</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Confidential Contact</h4>
-          <ul class="footer-contact-list">
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <div><strong>Phone (24/7):</strong><br><a href="tel:+254712345678">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              <div><strong>WhatsApp:</strong><br><a href="https://wa.me/254712345678" target="_blank" rel="noopener">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <div><strong>Email:</strong><br><a href="mailto:care@shahidirecovery.co.ke">care@shahidirecovery.co.ke</a></div>
-            </li>
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer-contact">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span class="label">Phone, 24/7</span><a href="tel:+254795180704">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div><span class="label">WhatsApp</span><a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." target="_blank" rel="noopener">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><span class="label">Email</span><a href="mailto:restoracentreforrecovery@gmail.com">restoracentreforrecovery@gmail.com</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><span class="label">Location</span>Old Namanga Road, Nairobi</div></li>
           </ul>
         </div>
       </div>
-
-      <div class="footer-crisis-note" role="alert">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        <span>
-          <strong>24/7 Immediate Crisis Support:</strong> If you or someone you care about is experiencing an acute medical emergency, overdose risk, or severe psychological crisis, please call emergency services immediately or dial our confidential hotline at <a href="tel:+254712345678" style="color:inherit;text-decoration:underline;">+254 712 345 678</a>.
-        </span>
+      <div class="footer-note">
+        <p><strong>In an emergency</strong> or if someone has overdosed, call <a href="tel:999">999</a> or <a href="tel:112">112</a> straight away.</p>
       </div>
-
-      <div class="footer-bottom-bar">
-        <p>&copy; 2026 Shahidi Centre for Recovery. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="privacy.html">Privacy &amp; Confidentiality Policy</a>
-          <a href="terms.html">Terms &amp; Admissions Conditions</a>
-          <a href="contact.html">Find Our Location</a>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Restora Centre for Recovery</p>
+        <nav aria-label="Legal">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
       </div>
     </div>
   </footer>
-
-  <!-- Quick Help Modal -->
-  <div class="modal-wrapper" id="quickHelpModal" role="dialog" aria-modal="true" aria-labelledby="modalHelpTitle">
-    <div class="modal-overlay"></div>
-    <div class="modal-container">
-      <div class="modal-header">
-        <div>
-          <span class="badge badge-green" style="margin-bottom:6px">100% Confidential</span>
-          <h3 id="modalHelpTitle">We're Here When You're Ready</h3>
-        </div>
-        <button class="modal-close" aria-label="Close dialog">&times;</button>
-      </div>
-      <p style="font-size:0.9375rem; color:var(--color-text-muted); margin-bottom:12px">
-        Taking the first step takes courage. Connect with our caring clinical intake team through your preferred channel:
-      </p>
-      <div class="modal-options-list">
-        <a href="tel:+254712345678" class="modal-option-btn">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Call Our 24/7 Helpline</span>
-            <span class="modal-option-sub">+254 712 345 678 · Direct, private consultation</span>
-          </div>
-        </a>
-        <a href="https://wa.me/254712345678?text=Hello%20Shahidi%20Team%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20recovery%20programs." target="_blank" rel="noopener" class="modal-option-btn whatsapp">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Chat Discreetly via WhatsApp</span>
-            <span class="modal-option-sub">Fast, secure replies from an intake specialist</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 </body>
 </html>

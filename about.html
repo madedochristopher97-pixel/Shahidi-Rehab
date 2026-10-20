@@ -3,383 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Shahidi Centre for Recovery</title>
-  <meta name="description" content="Learn about Shahidi Centre for Recovery, our founding story, clinical philosophy, tranquil facility in Karen, Nairobi, and our compassionate multidisciplinary team.">
+  <title>About Us | Restora Centre for Recovery</title>
+  <meta name="description" content="Meet Restora Centre for Recovery: a calm, dignified addiction treatment centre on Old Namanga Road, Nairobi.">
+  <meta name="theme-color" content="#00335e">
+  <link rel="icon" type="image/svg+xml" href="images/icon-blue.svg">
+  <link rel="preload" href="fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/CooperLtBT-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__animReady)document.documentElement.classList.add('reveal-off')},4000);</script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- Accessible Skip Link -->
-  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Persistent Header -->
   <header class="site-header" id="siteHeader">
-    <div class="container header-nav-wrapper">
-      <a href="index.html" class="brand-link" aria-label="Shahidi Centre for Recovery Homepage">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery Logo" class="brand-logo-img" width="160" height="48">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="Restora Centre for Recovery home">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" class="brand-logo on-light" width="152" height="46">
+        <img src="images/logo-white.svg" alt="" class="brand-logo on-dark" width="153" height="46">
       </a>
-
-      <!-- Desktop Nav Pills (Active item has outline pill) -->
-      <nav class="main-nav" aria-label="Primary Navigation">
+      <nav class="main-nav" aria-label="Primary">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link active" aria-current="page">About Us</a>
-        <a href="programs.html" class="nav-link">Programs &amp; Treatment</a>
+        <a href="about.html" class="nav-link active" aria-current="page">About</a>
+        <a href="programs.html" class="nav-link">Programs</a>
         <a href="admissions.html" class="nav-link">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="resources.html" class="nav-link">Families</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
-
-      <!-- Persistent CTAs -->
       <div class="header-actions">
-        <a href="tel:+254712345678" class="header-phone-link" aria-label="Call our 24/7 confidential helpline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>+254 712 345 678</span>
-        </a>
-        <a href="#quickHelpModal" class="btn-get-help" data-open-modal="quick-help" id="headerGetHelpBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          <span>Get Help Now</span>
-        </a>
-        <button class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" id="mobileNavToggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+        <a href="tel:+254795180704" class="header-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+254 795 180 704</span></a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Navigation -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Menu">
+  <div class="drawer-overlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
     <div>
-      <div class="mobile-drawer-header">
-        <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" height="40" width="130">
-        <button class="mobile-drawer-close" aria-label="Close navigation menu" id="mobileDrawerClose">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+      <div class="drawer-head">
+        <img src="images/logo-blue.svg" alt="Restora Centre for Recovery" width="152" height="46">
+        <button class="drawer-close" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
-      <nav class="mobile-drawer-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link active">About Us</a>
-        <a href="programs.html" class="nav-link">Programs &amp; Treatment</a>
-        <a href="admissions.html" class="nav-link">Admissions</a>
-        <a href="resources.html" class="nav-link">Resources</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+      <nav class="drawer-nav" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active" aria-current="page">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="resources.html">Families</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="mobile-drawer-footer">
-      <a href="tel:+254712345678" class="btn btn-secondary btn-sm" style="width:100%">Call 24/7 Helpline</a>
-      <a href="https://wa.me/254712345678" target="_blank" rel="noopener" class="btn btn-green btn-sm" style="width:100%">Chat on WhatsApp</a>
+    <div class="drawer-foot">
+      <a href="tel:+254795180704" class="btn btn-navy btn-block"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+      <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline btn-block" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp us</span></a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main id="mainContent">
+  <main id="main">
 
-    <!-- 1. QUIET PAGE HERO -->
-    <section class="page-hero" aria-label="About Page Introduction">
+    <section class="page-hero">
       <div class="container">
-        <div class="page-hero-content">
-          <span class="section-tag">About Shahidi Centre</span>
-          <h1 class="page-hero-title">Standing as Witnesses to Human Renewal</h1>
-          <p class="page-hero-sub">
-            In Swahili, <em>Shahidi</em> means "witness." We exist to walk alongside individuals and families through their most vulnerable hours—witnessing their courage, restoring their health, and celebrating their lasting transformation.
-          </p>
-        </div>
+        <h1 data-reveal data-hero>Care with dignity, close to home.</h1>
+        <p data-reveal data-hero>Restora Centre for Recovery treats addiction and the mental health struggles that often come with it. We combine medical care, therapy and family support in a calm setting in Nairobi.</p>
       </div>
     </section>
 
-    <!-- 2. MISSION & FOUNDING STORY SECTION -->
-    <section class="section" aria-labelledby="missionStoryTitle">
+    <section class="section" aria-labelledby="beliefsTitle">
       <div class="container">
-        <div class="feature-split">
-          <div class="feature-text-block">
-            <span class="section-tag">Our Founding Purpose</span>
-            <h2 id="missionStoryTitle">Why Shahidi Centre Was Born</h2>
-            <p>
-              Shahidi Centre for Recovery was established by a multidisciplinary circle of addiction psychiatrists, clinical psychologists, and family advocates who saw a profound gap in East African addiction treatment: too many facilities relied on punitive, confrontational methods, institutional coldness, or superficial short-term fixes.
-            </p>
-            <p>
-              We believed there was a better, more humane way. We envisioned a medical sanctuary that combines the highest standards of evidence-based neuropsychiatry with genuine African hospitality, trauma-informed empathy, and serene natural beauty.
-            </p>
-            <p>
-              Recovery is neither a moral failure nor a test of willpower. It is an intricate neurobiological and emotional journey that requires compassionate medical stabilization, deep psychological inquiry, and a safe community where vulnerability is met with respect.
-            </p>
+        <div class="section-head" data-reveal>
+          <h2 id="beliefsTitle">What we believe</h2>
+        </div>
+        <div class="cols">
+          <div class="col rule-top" data-reveal>
+            <h3>Addiction is a health condition</h3>
+            <p>It is not a lack of willpower. With proper medical and emotional support, recovery is possible.</p>
           </div>
-
-          <div class="feature-image-wrapper">
-            <img src="images/hands-support.jpg" alt="Compassionate hands of care and personal reassurance" class="feature-image" width="1600" height="1066" loading="lazy">
-            <div class="feature-caption-badge">
-              <span class="feature-badge-title">Our Sacred Covenant</span>
-              <span class="feature-badge-desc">Zero stigma, absolute confidentiality, and unconditional positive regard</span>
-            </div>
+          <div class="col rule-top" data-reveal>
+            <h3>Dignity comes first</h3>
+            <p>No shaming, no pressure and no judgement. You decide your pace, with our guidance.</p>
+          </div>
+          <div class="col rule-top" data-reveal>
+            <h3>Families heal together</h3>
+            <p>Relationships are part of recovery, so we involve the people who matter to you, with your consent.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. CLINICAL PHILOSOPHY IN DEPTH (Carries extra weight for new centre) -->
-    <section class="section section-bg-warm" id="philosophy" aria-labelledby="philosophyTitle">
+    <section class="section section-alt defer" aria-labelledby="teamTitle">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Clinical Framework</span>
-          <h2 id="philosophyTitle" class="section-title">Our Four Cornerstones of Sustainable Recovery</h2>
-          <p class="section-desc">As a newly launched, state-of-the-art centre, our clinical model is built upon internationally validated addiction medicine protocols tailored thoughtfully to our cultural context.</p>
+        <div class="section-head" data-reveal>
+          <h2 id="teamTitle">Your care team</h2>
+          <p>Several specialists work together on one plan for you.</p>
         </div>
-
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-            </div>
-            <h3>1. Medical &amp; Neurobiological Care</h3>
-            <p>Addiction alters brain chemistry and autonomic regulation. Our medical team uses evidence-based pharmacotherapies to alleviate withdrawal safely and restore healthy sleep architecture, neurotransmitter balance, and nutritional vitality.</p>
+        <div class="cols cols-4">
+          <div class="col rule-top" data-reveal>
+            <h3>Doctors and psychiatrists</h3>
+            <p>Assess you at admission and oversee detox and medication.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path></svg>
-            </div>
-            <h3>2. Trauma-Informed Psychotherapy</h3>
-            <p>We look beneath the behavior to uncover the unresolved grief, developmental trauma, chronic stress, or co-occurring mood disorders that often fuel addictive coping mechanisms. Our clinicians utilize CBT, DBT, and EMDR therapies.</p>
+          <div class="col rule-top" data-reveal>
+            <h3>Nurses</h3>
+            <p>Monitor your health and comfort throughout your stay.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            </div>
-            <h3>3. Relational &amp; Systemic Family Healing</h3>
-            <p>An individual cannot heal in isolation while returning to an unaddressed home dynamic. We facilitate structured family psychoeducation, boundary workshops, and couples counseling to build a healthy ecosystem for sustained sobriety.</p>
+          <div class="col rule-top" data-reveal>
+            <h3>Psychologists and counsellors</h3>
+            <p>Lead one-to-one and group therapy.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <h3>4. Purpose, Community &amp; Aftercare</h3>
-            <p>Sobriety is not just the absence of alcohol or substances; it is the presence of meaningful purpose, connection, and joy. We help residents rebuild self-worth, career direction, and an active lifelong peer network.</p>
+          <div class="col rule-top" data-reveal>
+            <h3>Family and aftercare coordinators</h3>
+            <p>Involve your loved ones and plan life after discharge.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. FACILITY PHOTOGRAPHY SECTION (Real Space) -->
-    <section class="section" id="facility" aria-labelledby="facilityTitle">
+    <section class="section defer" id="facility" aria-labelledby="facilityTitle">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">A Place to Breathe</span>
-          <h2 id="facilityTitle" class="section-title">Our Sanctuary &amp; Healing Grounds</h2>
-          <p class="section-desc">Healing happens best in an environment that honors human dignity. Set among mature trees and peaceful gardens in Karen, Nairobi, Shahidi Centre provides comfort, tranquility, and safety.</p>
+        <div class="section-head" data-reveal>
+          <h2 id="facilityTitle">The centre</h2>
+          <p>Healing is easier in a calm place. Our centre is on Old Namanga Road, Nairobi, with quiet gardens and private rooms.</p>
         </div>
-
-        <div class="facility-grid">
-          <div class="facility-card">
-            <img src="images/facility-gardens.jpg" alt="Lush, peaceful healing gardens and walking path at Shahidi Centre" class="facility-img" width="1920" height="1080" loading="lazy">
-            <div class="facility-overlay">
-              <h4>Tranquil Garden Walking Paths</h4>
-              <p>Dappled sunlight, indigenous greenery, and outdoor meditation benches for quiet reflection and nervous system settling.</p>
-            </div>
-          </div>
-
-          <div class="facility-card">
-            <img src="images/facility-therapy-room.jpg" alt="Warm, dignified private counseling and wellness suite" class="facility-img" width="1920" height="1080" loading="lazy">
-            <div class="facility-overlay">
-              <h4>Private Consultation &amp; Therapy Suites</h4>
-              <p>Sunlit, comfortable rooms designed with natural textures and calm aesthetics for unhurried clinical sessions.</p>
-            </div>
-          </div>
-
-          <div class="facility-card">
-            <img src="images/clinic-facility.jpg" alt="Modern, hygienic 24/7 medical observation room" class="facility-img" width="1600" height="1066" loading="lazy">
-            <div class="facility-overlay">
-              <h4>24/7 Medical Detox Suite</h4>
-              <p>Fully equipped medical wing staffed round-the-clock by specialized nurses and on-call physicians for comfortable stabilization.</p>
-            </div>
-          </div>
-
-          <div class="facility-card">
-            <img src="images/warm-embrace.jpg" alt="Communal lounge for peer connection and mutual support" class="facility-img" width="1400" height="1120" loading="lazy">
-            <div class="facility-overlay">
-              <h4>Communal Living &amp; Fellowship Spaces</h4>
-              <p>Warm living areas where residents share nutritious meals, creative workshops, and deep, lasting camaraderie.</p>
-            </div>
-          </div>
+        <div class="photo-pair">
+          <figure data-reveal>
+            <img src="images/facility-gardens.webp" alt="Garden path with trees at the centre" width="1376" height="768" loading="lazy" decoding="async">
+            <figcaption><strong>Gardens</strong>Walking paths and quiet corners to rest and reflect.</figcaption>
+          </figure>
+          <figure data-reveal>
+            <img src="images/facility-therapy-room.webp" alt="A bright, comfortable therapy room" width="1376" height="768" loading="lazy" decoding="async">
+            <figcaption><strong>Therapy rooms</strong>Private, comfortable spaces for one-to-one sessions.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- 5. OUR TEAM - Staff Cards with Photo, Credentials, Bio -->
-    <section class="section section-bg-warm" id="team" aria-labelledby="teamTitle">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Clinical Leadership</span>
-          <h2 id="teamTitle" class="section-title">Meet Your Multidisciplinary Care Team</h2>
-          <p class="section-desc">Led by licensed psychiatrists, clinical psychologists, and seasoned addiction specialists who bring decades of clinical rigor and profound empathy to your care.</p>
+    <section class="cta-band" aria-labelledby="ctaTitle">
+      <div class="container cta-inner">
+        <div data-reveal>
+          <h2 id="ctaTitle">Have questions about how we can help?</h2>
+          <p>Speak to our admissions team. We will listen, explain our programs and walk you through each step.</p>
         </div>
-
-        <div class="team-grid">
-          <!-- Member 1: Dr. Wanjiru Mwangi -->
-          <article class="team-card">
-            <img src="images/team-wanjiru.jpg" alt="Dr. Wanjiru Mwangi, Medical Director" class="team-photo" width="800" height="800" loading="lazy">
-            <div class="team-info">
-              <h3 class="team-name">Dr. Wanjiru Mwangi</h3>
-              <p class="team-role">Medical Director &amp; Addiction Psychiatrist · MBChB, MMed Psych</p>
-              <p class="team-bio">
-                Dr. Mwangi has over 16 years of clinical psychiatric experience specializing in neurobiological detox protocols and dual-diagnosis stabilization. She oversees all medical intake assessments and personalized pharmacotherapy regimens.
-              </p>
-            </div>
-          </article>
-
-          <!-- Member 2: David Kipkemboi, PhD -->
-          <article class="team-card">
-            <img src="images/team-david.jpg" alt="David Kipkemboi, PhD, Head of Clinical Psychology" class="team-photo" width="800" height="800" loading="lazy">
-            <div class="team-info">
-              <h3 class="team-name">David Kipkemboi, PhD</h3>
-              <p class="team-role">Head of Clinical Psychology &amp; Trauma Therapies</p>
-              <p class="team-bio">
-                Dr. Kipkemboi holds a doctorate in Clinical Psychology with advanced training in cognitive behavioral and somatic trauma therapies. He leads our individual psychotherapeutic tracks and group dynamic sessions.
-              </p>
-            </div>
-          </article>
-
-          <!-- Member 3: Amina Hassan, MSW -->
-          <article class="team-card">
-            <img src="images/team-amina.jpg" alt="Amina Hassan, MSW, Director of Family Programs" class="team-photo" width="800" height="800" loading="lazy">
-            <div class="team-info">
-              <h3 class="team-name">Amina Hassan, MSW</h3>
-              <p class="team-role">Director of Family Programs &amp; Continuing Care</p>
-              <p class="team-bio">
-                A licensed medical social worker and systemic family therapist, Amina coordinates our family reconciliation workshops and designs customized, step-down continuing care networks for every graduating resident.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. FINAL CTA BAND (Directly above footer, Reference Image 2 style) -->
-    <section class="final-cta-band-wrapper" aria-label="Call to Action">
-      <div class="container">
-        <div class="final-cta-band">
-          <div class="final-cta-content">
-            <h2 class="final-cta-headline">Have Questions About How We Can Help?</h2>
-            <p class="final-cta-subtext">
-              Speak directly with our clinical intake coordinator. We are here to listen with patience, explain our programs, and walk you through every step.
-            </p>
-            <a href="programs.html" class="btn final-cta-btn btn-lg" id="aboutExploreProgramsBtn">
-              <span>Explore Our Treatment Programs</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
+        <div class="cta-actions" data-reveal>
+          <a href="tel:+254795180704" class="btn btn-light btn-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call +254 795 180 704</span></a>
+          <a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." class="btn btn-outline-light btn-lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Message on WhatsApp</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- PERSISTENT FOOTER (Directly below CTA band) -->
-  <footer class="site-footer" id="siteFooter">
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <img src="images/shahidi-logo.svg" alt="Shahidi Centre for Recovery" class="footer-brand-logo" width="160" height="48">
-          <p class="footer-tagline">"Witnessing Recovery, Transforming Lives."</p>
-          <p class="footer-mission-snippet">A compassionate, licensed addiction rehabilitation sanctuary providing individualized medical detox, residential care, and lifelong family support.</p>
-          <div class="footer-social-row" aria-label="Social media links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Shahidi on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-          </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-white.svg" alt="Restora Centre for Recovery" width="147" height="44" loading="lazy">
+          <p>Addiction treatment and family support on Old Namanga Road, Nairobi.</p>
         </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
+        <div>
+          <h4>Explore</h4>
           <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="about.html#team">Our Clinical Team</a></li>
-            <li><a href="about.html#facility">Facility &amp; Grounds</a></li>
-            <li><a href="about.html#philosophy">Clinical Philosophy</a></li>
-            <li><a href="resources.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="resources.html">For families</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Programs</h4>
+        <div>
+          <h4>Treatment</h4>
           <ul class="footer-links">
-            <li><a href="programs.html#detox">Medical Detox</a></li>
-            <li><a href="programs.html#residential">Residential Care</a></li>
-            <li><a href="programs.html#outpatient">Outpatient &amp; IOP</a></li>
-            <li><a href="programs.html#family">Family Healing Program</a></li>
-            <li><a href="programs.html#aftercare">Lifelong Aftercare</a></li>
-            <li><a href="admissions.html">Admissions Process</a></li>
+            <li><a href="programs.html#detox">Medical detox</a></li>
+            <li><a href="programs.html#residential">Residential care</a></li>
+            <li><a href="programs.html#outpatient">Outpatient</a></li>
+            <li><a href="programs.html#aftercare">Aftercare</a></li>
+            <li><a href="programs.html#family">Family program</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Confidential Contact</h4>
-          <ul class="footer-contact-list">
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <div><strong>Phone (24/7):</strong><br><a href="tel:+254712345678">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              <div><strong>WhatsApp:</strong><br><a href="https://wa.me/254712345678" target="_blank" rel="noopener">+254 712 345 678</a></div>
-            </li>
-            <li class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <div><strong>Email:</strong><br><a href="mailto:care@shahidirecovery.co.ke">care@shahidirecovery.co.ke</a></div>
-            </li>
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer-contact">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span class="label">Phone, 24/7</span><a href="tel:+254795180704">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div><span class="label">WhatsApp</span><a href="https://wa.me/254795180704?text=Hello%20Restora%20Centre%2C%20I%20would%20like%20to%20speak%20with%20someone%20about%20treatment." target="_blank" rel="noopener">+254 795 180 704</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><span class="label">Email</span><a href="mailto:restoracentreforrecovery@gmail.com">restoracentreforrecovery@gmail.com</a></div></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><span class="label">Location</span>Old Namanga Road, Nairobi</div></li>
           </ul>
         </div>
       </div>
-
-      <div class="footer-crisis-note" role="alert">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        <span>
-          <strong>24/7 Immediate Crisis Support:</strong> If you or someone you care about is experiencing an acute medical emergency, overdose risk, or severe psychological crisis, please call emergency services immediately or dial our confidential hotline at <a href="tel:+254712345678" style="color:inherit;text-decoration:underline;">+254 712 345 678</a>.
-        </span>
+      <div class="footer-note">
+        <p><strong>In an emergency</strong> or if someone has overdosed, call <a href="tel:999">999</a> or <a href="tel:112">112</a> straight away.</p>
       </div>
-
-      <div class="footer-bottom-bar">
-        <p>&copy; 2026 Shahidi Centre for Recovery. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="privacy.html">Privacy &amp; Confidentiality Policy</a>
-          <a href="terms.html">Terms &amp; Admissions Conditions</a>
-          <a href="contact.html">Find Our Location</a>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Restora Centre for Recovery</p>
+        <nav aria-label="Legal">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
       </div>
     </div>
   </footer>
-
-  <!-- Quick Help Modal -->
-  <div class="modal-wrapper" id="quickHelpModal" role="dialog" aria-modal="true" aria-labelledby="modalHelpTitle">
-    <div class="modal-overlay"></div>
-    <div class="modal-container">
-      <div class="modal-header">
-        <div>
-          <span class="badge badge-green" style="margin-bottom:6px">100% Confidential</span>
-          <h3 id="modalHelpTitle">We're Here When You're Ready</h3>
-        </div>
-        <button class="modal-close" aria-label="Close dialog">&times;</button>
-      </div>
-      <p style="font-size:0.9375rem; color:var(--color-text-muted); margin-bottom:12px">
-        Taking the first step takes courage. Connect with our caring clinical intake team through your preferred channel:
-      </p>
-      <div class="modal-options-list">
-        <a href="tel:+254712345678" class="modal-option-btn">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Call Our 24/7 Helpline</span>
-            <span class="modal-option-sub">+254 712 345 678 · Direct, private consultation</span>
-          </div>
-        </a>
-        <a href="https://wa.me/254712345678?text=Hello%20Shahidi%20Team%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20recovery%20programs." target="_blank" rel="noopener" class="modal-option-btn whatsapp">
-          <div class="modal-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
-          <div class="modal-option-info">
-            <span class="modal-option-title">Chat Discreetly via WhatsApp</span>
-            <span class="modal-option-sub">Fast, secure replies from an intake specialist</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
