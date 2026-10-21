@@ -343,6 +343,7 @@ ul, ol { list-style: none; }
 /* Facility: two quiet photos with captions */
 .photo-pair { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--s3); }
 .photo-pair figure img { width: 100%; height: clamp(260px, 32vw, 420px); object-fit: cover; border-radius: var(--radius-lg); }
+.photo-pair figure img.pos-low { object-position: 50% 78%; }
 .photo-pair figcaption { margin-top: 12px; font-size: 0.9375rem; color: var(--text-muted); }
 .photo-pair figcaption strong { display: block; color: var(--navy); font-family: var(--font-head); font-weight: 400; font-size: 1.125rem; }
 
