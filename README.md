@@ -25,7 +25,7 @@ Open http://localhost:8080/index.html
 ## Structure
 
 ```
-index.html, about.html, programs.html, admissions.html,
+index.html, about.html, programs.html, admissions.html, sitemap.xml, robots.txt,
 resources.html (families), contact.html, privacy.html, terms.html
 css/style.css      Design tokens and all components
 js/main.js         Header, drawer, forms, Lenis, GSAP
