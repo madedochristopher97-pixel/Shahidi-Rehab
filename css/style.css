@@ -287,6 +287,8 @@ ul, ol { list-style: none; }
 .split-media { border-radius: var(--radius-lg); overflow: hidden; }
 .split-media img { width: 100%; height: clamp(320px, 38vw, 500px); object-fit: cover; }
 .split-media img.pos-upper { object-position: 50% 28%; }
+.split-media img.pos-faces { object-position: 50% 62%; }
+.split-media img.pos-left { object-position: 32% 50%; }
 .split-media img.pos-mid { object-position: 50% 42%; }
 .split-media img.pos-low2 { object-position: 50% 68%; }
 .split-text { display: flex; flex-direction: column; gap: var(--s2); }
