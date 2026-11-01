@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restora Image Picks, Batch 2</title>
+<style>
+  /* Layout: masonry columns keep every photo at its true ratio, so landscape vs portrait is judged honestly. */
+  :root {
+    --bg: #f3f1ec;
+    --ink: #1c2a26;
+    --muted: #5d6b66;
+    --line: #d9d5cb;
+    --card: #ffffff;
+    --green: #2f6b4f;
+    --green-soft: #e1ece5;
+    --blue: #1f4e79;
+    --pick: #e8a317;
+    --font: "Segoe UI", "Avenir Next", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font);
+    font-size: 15px; line-height: 1.5;
+    padding: 32px max(16px, env(safe-area-inset-left, 0px)) 120px max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { display: grid; gap: 8px; margin-bottom: 20px; max-width: 760px; }
+  h1 { margin: 0; font-size: 30px; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+  header p { margin: 0; color: var(--muted); }
+  .swap { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 24px; padding: 12px 14px; background: var(--green-soft); border-radius: 6px; font-size: 13.5px; }
+  .swap b { font-weight: 600; }
+  .grid { column-count: 3; column-gap: 16px; }
+  @media (max-width: 900px) { .grid { column-count: 2; } }
+  @media (max-width: 520px) { .grid { column-count: 1; } }
+  .tile { break-inside: avoid; margin: 0 0 16px; background: var(--card); border: 2px solid transparent; border-radius: 8px; overflow: hidden; }
+  .tile.on { border-color: var(--pick); }
+  .photo { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #cfd6d2; cursor: pointer; line-height: 0; }
+  .photo img { width: 100%; height: auto; display: block; }
+  .num {
+    position: absolute; left: 10px; top: 10px; min-width: 34px; height: 34px; padding: 0 9px;
+    display: grid; place-items: center; border-radius: 17px; background: var(--ink); color: #fff;
+    font: 700 15px/1 var(--font);
+  }
+  .tile.on .num { background: var(--pick); color: #1c1a12; }
+  .tick { position: absolute; right: 10px; top: 10px; height: 26px; padding: 0 10px; display: none; align-items: center; border-radius: 13px; background: var(--pick); color: #1c1a12; font: 600 12px/1 var(--font); }
+  .tile.on .tick { display: flex; }
+  .photo:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+  .meta { padding: 10px 12px 12px; display: grid; gap: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--green-soft); color: var(--green); font-weight: 600; }
+  .tag.o { background: #e6e9ee; color: var(--blue); }
+  .tag.hero { background: #fbe9bf; color: #7a5200; }
+  .cap { margin: 0; font-size: 14px; }
+  .src { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--muted); }
+  .src a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  .src a:hover { text-decoration: underline; }
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; background: var(--ink); color: #fff;
+    padding: 12px max(16px, env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; justify-content: space-between;
+  }
+  .bar .sel { font-size: 14px; }
+  .bar .sel strong { color: var(--pick); font-size: 16px; }
+  .bar button { font: 600 13px var(--font); padding: 8px 14px; border-radius: 6px; border: 1px solid #ffffff55; background: transparent; color: #fff; cursor: pointer; }
+  .bar button.primary { background: var(--pick); color: #1c1a12; border-color: var(--pick); }
+  .bar .btns { display: flex; gap: 8px; }
+  footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; max-width: 760px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Restora image picks, batch 2</h1>
+    <p>Twelve more options from Magnific (the new name for Freepik) and Nappy: Black teen and young men together, group therapy circles, close hugs, and calm green fields. Numbers continue from batch 1. Click a photo to pick it, then tell me the numbers.</p>
+  </header>
+
+  <div class="swap">
+    <span><b>Sources:</b> 11 from Magnific, 1 from Nappy</span>
+    <span><b>Mix:</b> 9 landscape, 3 portrait</span>
+    <span><b>Checked:</b> every person visible in these 12 reads as Black</span>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <footer>Magnific free photos need a credit line to the author and Magnific (the original page shows the exact wording). Nappy photos are free to use commercially. Because the site covers addiction and recovery, avoid captions or copy that suggest these people are clients or patients. Open the source page for the full-size download.</footer>
+</div>
+
+<div class="bar" role="status">
+  <div class="sel">Picked: <strong id="count">0</strong> <span id="list">none yet</span></div>
+  <div class="btns">
+    <button id="clear" type="button">Clear</button>
+    <button id="copy" class="primary" type="button">Copy numbers</button>
+  </div>
+</div>
+
+<script>
+  const M = s => `https://img.magnific.com/free-photo/${s}?w=1000`;
+  const MP = (slug, id) => `https://www.magnific.com/free-photo/${slug}_${id}.htm`;
+  const photos = [
+    { n: 13, o: 'Landscape', cat: 'Therapy circle', hero: true,  img: M('people-meeting-support-group_23-2151079567.jpg'), cap: 'Young Black group in a support circle, one woman clapping.', site: 'Magnific', url: MP('people-meeting-support-group', 94573864) },
+    { n: 14, o: 'Landscape', cat: 'Therapy circle', hero: false, img: M('people-enjoying-each-others-company-dinner-party_23-2150763429.jpg'), cap: 'Black woman speaking to the group, others listening close.', site: 'Magnific', url: MP('people-enjoying-each-others-company-dinner-party', 66103770) },
+    { n: 15, o: 'Portrait',  cat: 'Therapy circle', hero: false, img: M('people-meeting-support-group_23-2151079535.jpg'), cap: 'Young Black man seated in a circle, other people blurred in the foreground.', site: 'Magnific', url: MP('people-meeting-support-group', 94573949) },
+    { n: 16, o: 'Landscape', cat: 'Boys, community', hero: false, img: M('full-shot-friends-spending-time-outdoors_23-2150245498.jpg'), cap: 'Two young Black men sitting on the ground, talking and laughing.', site: 'Magnific', url: MP('full-shot-friends-spending-time-outdoors', 39425186) },
+    { n: 17, o: 'Landscape', cat: 'Boys, community', hero: false, img: M('full-shot-kids-sitting-stairs_23-2149479920.jpg'), cap: 'Two Black boys talking on a doorstep.', site: 'Magnific', url: MP('full-shot-kids-sitting-stairs', 28476561) },
+    { n: 18, o: 'Portrait',  cat: 'Boys, friendship', hero: false, img: M('fist-fist-two-african-male-friends-shaking-hands_627829-5746.jpg'), cap: 'Two young Black men sharing a fist bump.', site: 'Magnific', url: MP('fist-fist-two-african-male-friends-shaking-hands', 26219276) },
+    { n: 19, o: 'Landscape', cat: 'Community hug', hero: true,  img: M('medium-shot-community-members_23-2148931082.jpg'), cap: 'Black men and children in one group embrace, seen from behind.', site: 'Magnific', url: MP('medium-shot-community-members', 13658932) },
+    { n: 20, o: 'Landscape', cat: 'Hug, close up', hero: false, img: M('multiethnic-close-friends-wearing-white-shirts-hugging-outside_74855-4334.jpg'), cap: 'Two friends in white hugging on a city walkway.', site: 'Magnific', url: MP('multiethnic-close-friends-wearing-white-shirts-hugging-outside', 6882479) },
+    { n: 21, o: 'Landscape', cat: 'Hug, close up', hero: false, img: M('family-enjoying-their-quality-winter-time_23-2149186276.jpg'), cap: 'Black woman with cropped blond hair hugging a man, eyes closed.', site: 'Magnific', url: MP('family-enjoying-their-quality-winter-time', 20503046) },
+    { n: 22, o: 'Landscape', cat: 'Hug, close up', hero: false, img: 'https://images.nappy.co/photo/qsScfX7-QvkDogRaYHNjy.jpg?width=1260', cap: 'Two Black men in a tight, long hug.', site: 'Nappy', url: 'https://nappy.co/photo/black-men-hugging%2BqsScfX7-QvkDogRaYHNjy' },
+    { n: 23, o: 'Landscape', cat: 'Grass field', hero: true,  img: M('people-walking-green-grass-field-daytime_395237-36.jpg'), cap: 'Misty green field at sunrise, tiny figures far along the path.', site: 'Magnific', url: MP('people-walking-green-grass-field-daytime', 12647158) },
+    { n: 24, o: 'Portrait',  cat: 'Grass field', hero: false, img: M('back-view-black-man-resting-grass-with-wireless-headphones_1262-12607.jpg'), cap: 'Black man sitting on a green lawn, back to camera, looking out.', site: 'Magnific', url: MP('back-view-black-man-resting-grass-with-wireless-headphones', 2538520) }
+  ];
+
+  const KEY = 'restora-picks-batch-2';
+  let picks = new Set();
+  try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(n => picks.add(n)); } catch (e) {}
+
+  const grid = document.getElementById('grid');
+  photos.forEach(p => {
+    const el = document.createElement('article');
+    el.className = 'tile'; el.id = 't' + p.n;
+    el.innerHTML = `
+      <button class="photo" type="button" aria-pressed="false" aria-label="Pick image ${p.n}">
+        <img src="${p.img}" alt="${p.cap}" loading="lazy">
+        <span class="num">${p.n}</span><span class="tick">Picked</span>
+      </button>
+      <div class="meta">
+        <div class="tags"><span class="tag">${p.cat}</span><span class="tag o">${p.o}</span>${p.hero ? '<span class="tag hero">Hero candidate</span>' : ''}</div>
+        <p class="cap">${p.cap}</p>
+        <div class="src"><span>${p.site}</span><a href="${p.url}" target="_blank" rel="noopener">Open original &#8599;</a></div>
+      </div>`;
+    el.querySelector('.photo').addEventListener('click', () => toggle(p.n));
+    grid.appendChild(el);
+  });
+
+  function render() {
+    photos.forEach(p => {
+      const el = document.getElementById('t' + p.n);
+      const on = picks.has(p.n);
+      el.classList.toggle('on', on);
+      el.querySelector('.photo').setAttribute('aria-pressed', on);
+    });
+    const arr = [...picks].sort((a, b) => a - b);
+    document.getElementById('count').textContent = arr.length;
+    document.getElementById('list').textContent = arr.length ? '(' + arr.join(', ') + ')' : 'none yet';
+    try { localStorage.setItem(KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function toggle(n) { picks.has(n) ? picks.delete(n) : picks.add(n); render(); }
+  document.getElementById('clear').addEventListener('click', () => { picks.clear(); render(); });
+  document.getElementById('copy').addEventListener('click', async () => {
+    const txt = [...picks].sort((a, b) => a - b).join(', ');
+    const btn = document.getElementById('copy');
+    try { await navigator.clipboard.writeText(txt); btn.textContent = 'Copied'; }
+    catch (e) { btn.textContent = txt || 'Nothing picked'; }
+    setTimeout(() => { btn.textContent = 'Copy numbers'; }, 1600);
+  });
+  render();
+</script>
+</body>
+</html>
