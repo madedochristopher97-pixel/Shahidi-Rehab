@@ -1,10 +1,10 @@
 # Restora Centre for Recovery
 
-Marketing website for Restora Centre for Recovery, an addiction treatment and family support centre on Old Namanga Road, Nairobi.
+Marketing website for Restora Centre for Recovery, an addiction treatment and family support centre on Old Namanga Rd, Kitengela.
 
 - **Phone / WhatsApp:** +254 795 180 704
 - **Email:** restoracentreforrecovery@gmail.com
-- **Location:** Old Namanga Road, Nairobi
+- **Location:** Old Namanga Rd, Kitengela
 
 ## Stack
 

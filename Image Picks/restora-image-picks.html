@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restora Image Picks</title>
+<style>
+  /* Layout: masonry columns keep every photo at its true ratio, so landscape vs portrait is judged honestly. */
+  :root {
+    --bg: #f3f1ec;
+    --ink: #1c2a26;
+    --muted: #5d6b66;
+    --line: #d9d5cb;
+    --card: #ffffff;
+    --green: #2f6b4f;
+    --green-soft: #e1ece5;
+    --blue: #1f4e79;
+    --pick: #e8a317;
+    --font: "Segoe UI", "Avenir Next", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font);
+    font-size: 15px; line-height: 1.5;
+    padding: 32px max(16px, env(safe-area-inset-left, 0px)) 120px max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { display: grid; gap: 8px; margin-bottom: 20px; max-width: 760px; }
+  h1 { margin: 0; font-size: 30px; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+  header p { margin: 0; color: var(--muted); }
+  .swap { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 24px; padding: 12px 14px; background: var(--green-soft); border-radius: 6px; font-size: 13.5px; }
+  .swap b { font-weight: 600; }
+  .grid { column-count: 3; column-gap: 16px; }
+  @media (max-width: 900px) { .grid { column-count: 2; } }
+  @media (max-width: 520px) { .grid { column-count: 1; } }
+  .tile { break-inside: avoid; margin: 0 0 16px; background: var(--card); border: 2px solid transparent; border-radius: 8px; overflow: hidden; }
+  .tile.on { border-color: var(--pick); }
+  .photo { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #cfd6d2; cursor: pointer; line-height: 0; }
+  .photo img { width: 100%; height: auto; display: block; }
+  .num {
+    position: absolute; left: 10px; top: 10px; min-width: 34px; height: 34px; padding: 0 9px;
+    display: grid; place-items: center; border-radius: 17px; background: var(--ink); color: #fff;
+    font: 700 15px/1 var(--font);
+  }
+  .tile.on .num { background: var(--pick); color: #1c1a12; }
+  .tick { position: absolute; right: 10px; top: 10px; height: 26px; padding: 0 10px; display: none; align-items: center; border-radius: 13px; background: var(--pick); color: #1c1a12; font: 600 12px/1 var(--font); }
+  .tile.on .tick { display: flex; }
+  .photo:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+  .meta { padding: 10px 12px 12px; display: grid; gap: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--green-soft); color: var(--green); font-weight: 600; }
+  .tag.o { background: #e6e9ee; color: var(--blue); }
+  .tag.hero { background: #fbe9bf; color: #7a5200; }
+  .cap { margin: 0; font-size: 14px; }
+  .src { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--muted); }
+  .src a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  .src a:hover { text-decoration: underline; }
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; background: var(--ink); color: #fff;
+    padding: 12px max(16px, env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; justify-content: space-between;
+  }
+  .bar .sel { font-size: 14px; }
+  .bar .sel strong { color: var(--pick); font-size: 16px; }
+  .bar button { font: 600 13px var(--font); padding: 8px 14px; border-radius: 6px; border: 1px solid #ffffff55; background: transparent; color: #fff; cursor: pointer; }
+  .bar button.primary { background: var(--pick); color: #1c1a12; border-color: var(--pick); }
+  .bar .btns { display: flex; gap: 8px; }
+  footer { margin-top: 12px; color: var(--muted); font-size: 12.5px; max-width: 760px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Restora website image picks</h1>
+    <p>Twelve replacements for the white-led imagery: Black people in group therapy and community circles, hugs, young Black boys together, and serene green fields. Click a photo to pick it, then tell me the numbers.</p>
+  </header>
+
+  <div class="swap">
+    <span><b>Replace:</b> hero-main (new hero needed), warm-embrace, support-group, friends-celebrating</span>
+    <span><b>Keep:</b> hands-support, clinic-facility (close-up Black hands)</span>
+    <span><b>Mix:</b> 8 landscape, 4 portrait</span>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <footer>All photos are free to use under the Pexels or Unsplash licence. Because the site covers addiction and recovery, I'd avoid captions or copy that suggest these people are clients or patients. Open the source page for the full-size download.</footer>
+</div>
+
+<div class="bar" role="status">
+  <div class="sel">Picked: <strong id="count">0</strong> <span id="list">none yet</span></div>
+  <div class="btns">
+    <button id="clear" type="button">Clear</button>
+    <button id="copy" class="primary" type="button">Copy numbers</button>
+  </div>
+</div>
+
+<script>
+  const P = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1000`;
+  const px = (slug, id) => `https://www.pexels.com/photo/${slug}-${id}/`;
+  const photos = [
+    { n: 1,  o: 'Landscape', cat: 'Therapy circle', hero: false, img: P(7579310), cap: 'Young Black man speaking in a group therapy circle.', site: 'Pexels', url: px('people-in-a-psychotherapy-session', 7579310) },
+    { n: 2,  o: 'Landscape', cat: 'Community circle', hero: false, img: P(6860385), cap: 'Young Black adults seated in a circle, holding hands on the floor.', site: 'Pexels', url: px('group-of-people-praying-in-the-living-room', 6860385) },
+    { n: 3,  o: 'Landscape', cat: 'Hug, close up', hero: true, img: P(8556340), cap: 'Close group hug outdoors, faces turned in toward each other.', site: 'Pexels', url: px('people-in-a-huddle', 8556340) },
+    { n: 4,  o: 'Landscape', cat: 'Boys, hug', hero: true, img: P(36182712), cap: 'Group of Black boys with arms around each other beside calm water.', site: 'Pexels', url: px('group-of-boys-embracing-near-serene-waterscape', 36182712) },
+    { n: 5,  o: 'Landscape', cat: 'Boys, community', hero: false, img: P(30037379), cap: 'Smiling Black boys and young men packed close together.', site: 'Pexels', url: px('joyful-youth-gathering-in-maiduguri-nigeria', 30037379) },
+    { n: 6,  o: 'Landscape', cat: 'Hug, close up', hero: false, img: 'https://images.unsplash.com/photo-1663781985152-d9805a616c8f?w=1000&q=80', cap: 'Tight embrace between Black men, shot close and low-lit.', site: 'Unsplash', url: 'https://unsplash.com/photos/a-person-holding-another-man--zOQ4Lo4f7I' },
+    { n: 7,  o: 'Landscape', cat: 'Grass field', hero: true, img: P(35590729), cap: 'One figure on a wide green hill under a soft blue sky.', site: 'Pexels', url: px('lone-traveler-on-expansive-green-field', 35590729) },
+    { n: 8,  o: 'Landscape', cat: 'Grass field', hero: false, img: P(17031603), cap: 'Man walking alone through a green grass field.', site: 'Pexels', url: px('a-man-walking-on-a-grass-field', 17031603) },
+    { n: 9,  o: 'Portrait',  cat: 'Therapy circle', hero: false, img: P(7579318), cap: 'Black facilitator holding hands with the group.', site: 'Pexels', url: px('people-in-a-psychotherapy-session', 7579318) },
+    { n: 10, o: 'Portrait',  cat: 'Hug, close up', hero: false, img: P(4262424), cap: 'Black family wrapped in one group hug.', site: 'Pexels', url: px('family-gathering-for-a-group-hug', 4262424) },
+    { n: 11, o: 'Portrait',  cat: 'Teen, mentoring', hero: false, img: P(12887163), cap: 'Black teenager talking with an adult in a sunlit park.', site: 'Pexels', url: px('woman-and-a-young-boy-talking-in-a-park-and-smiling', 12887163) },
+    { n: 12, o: 'Portrait',  cat: 'Grass field', hero: false, img: P(37109758), cap: 'Lone figure crossing a bright, wide green field.', site: 'Pexels', url: px('lone-figure-in-expansive-green-field', 37109758) }
+  ];
+
+  const KEY = 'restora-picks';
+  let picks = new Set();
+  try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(n => picks.add(n)); } catch (e) {}
+
+  const grid = document.getElementById('grid');
+  photos.forEach(p => {
+    const el = document.createElement('article');
+    el.className = 'tile'; el.id = 't' + p.n;
+    el.innerHTML = `
+      <button class="photo" type="button" aria-pressed="false" aria-label="Pick image ${p.n}">
+        <img src="${p.img}" alt="${p.cap}" loading="lazy">
+        <span class="num">${p.n}</span><span class="tick">Picked</span>
+      </button>
+      <div class="meta">
+        <div class="tags"><span class="tag">${p.cat}</span><span class="tag o">${p.o}</span>${p.hero ? '<span class="tag hero">Hero candidate</span>' : ''}</div>
+        <p class="cap">${p.cap}</p>
+        <div class="src"><span>${p.site}</span><a href="${p.url}" target="_blank" rel="noopener">Open original &#8599;</a></div>
+      </div>`;
+    el.querySelector('.photo').addEventListener('click', () => toggle(p.n));
+    grid.appendChild(el);
+  });
+
+  function render() {
+    photos.forEach(p => {
+      const el = document.getElementById('t' + p.n);
+      const on = picks.has(p.n);
+      el.classList.toggle('on', on);
+      el.querySelector('.photo').setAttribute('aria-pressed', on);
+    });
+    const arr = [...picks].sort((a, b) => a - b);
+    document.getElementById('count').textContent = arr.length;
+    document.getElementById('list').textContent = arr.length ? '(' + arr.join(', ') + ')' : 'none yet';
+    try { localStorage.setItem(KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function toggle(n) { picks.has(n) ? picks.delete(n) : picks.add(n); render(); }
+  document.getElementById('clear').addEventListener('click', () => { picks.clear(); render(); });
+  document.getElementById('copy').addEventListener('click', async () => {
+    const txt = [...picks].sort((a, b) => a - b).join(', ');
+    const btn = document.getElementById('copy');
+    try { await navigator.clipboard.writeText(txt); btn.textContent = 'Copied'; }
+    catch (e) { btn.textContent = txt || 'Nothing picked'; }
+    setTimeout(() => { btn.textContent = 'Copy numbers'; }, 1600);
+  });
+  render();
+</script>
+</body>
+</html>
