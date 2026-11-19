@@ -6,10 +6,10 @@
 (function () {
   'use strict';
 
-  var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
+  var CONTACT_EMAIL = 'info@restorarehabcenter.com';
   var CONTACT_PHONE = '+254 795 180 704';
-  // Paste your Formspree form URL here, e.g. 'https://formspree.io/f/abcdwxyz'
-  var FORMSPREE_ENDPOINT = '';
+  // Form delivery via FormSubmit (no account). First submission sends a one-time activation email to CONTACT_EMAIL.
+  var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lenis = null;
 
@@ -86,6 +86,7 @@
 
         var data = new FormData(form);
         data.append('_subject', 'Website enquiry from ' + name);
+        data.append('_template', 'table');
         if (/^\S+@\S+\.\S+$/.test(contact)) data.append('email', contact);
 
         if (button) { button.disabled = true; button.textContent = 'Sending...'; }
