@@ -172,12 +172,70 @@
     }
   }
 
+  /* ---------- Facility gallery: open a photo full size ---------- */
+  function initGallery() {
+    var tiles = document.querySelectorAll('.g-item, .gallery-lead');
+    if (!tiles.length) return;
+
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close photo">&times;</button><figure><img alt=""><figcaption></figcaption></figure>';
+    document.body.appendChild(box);
+
+    var img = box.querySelector('img');
+    var cap = box.querySelector('figcaption');
+    var closeBtn = box.querySelector('.lightbox-close');
+    var lastFocus = null;
+
+    function open(src, alt, text) {
+      img.src = src; img.alt = alt;
+      cap.textContent = text || '';
+      cap.hidden = !text;
+      box.classList.add('open');
+      box.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lenis) lenis.start();
+      if (lastFocus) lastFocus.focus({ preventScroll: true });
+    }
+
+    tiles.forEach(function (tile) {
+      var i = tile.querySelector('img');
+      if (!i) return;
+      var c = tile.querySelector('figcaption');
+      tile.tabIndex = 0;
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('aria-label', 'View photo: ' + i.alt);
+      function go() { lastFocus = tile; open(i.currentSrc || i.src, i.alt, c ? c.textContent : ''); }
+      tile.addEventListener('click', go);
+      tile.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+    });
+
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target === closeBtn) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+  }
+
   function init() {
     initHeader();
     initForms();
     initSmoothScroll();
     initDrawer();
     initMotion();
+    initGallery();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
