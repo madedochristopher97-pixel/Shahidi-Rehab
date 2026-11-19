@@ -360,6 +360,10 @@ ul, ol { list-style: none; }
 .col ul { display: flex; flex-direction: column; gap: 10px; margin-top: var(--s1); }
 .col li { position: relative; padding-left: 18px; color: var(--text-muted); font-size: 1rem; }
 .col li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.mv-title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: var(--s1) 0 var(--s2); }
+.philosophy { background: var(--navy); padding-block: clamp(56px, 8vw, 104px); text-align: center; }
+.philosophy .kicker-num { color: var(--green-bright); display: block; margin-bottom: var(--s2); }
+.philosophy h2 { color: #fff; font-size: clamp(1.75rem, 3.6vw, 2.9rem); max-width: 22ch; margin-inline: auto; line-height: 1.2; }
 .rule-top { border-top: 1px solid var(--line); padding-top: var(--s3); }
 
 /* Admissions steps */
