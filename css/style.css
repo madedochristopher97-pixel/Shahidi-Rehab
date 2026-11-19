@@ -420,6 +420,33 @@ a.contact-row:hover .val { color: var(--green-dark); }
 .legal h2 { font-size: 1.4rem; margin: var(--s5) 0 var(--s1); }
 .legal h2:first-of-type { margin-top: 0; }
 
+
+/* Blog ------------------------------------------------------------------- */
+.post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
+.post-card { display: flex; flex-direction: column; gap: 10px; padding-top: var(--s3); border-top: 2px solid var(--line); }
+.post-card h2 { font-size: clamp(1.25rem, 1.9vw, 1.5rem); line-height: 1.25; }
+.post-card h2 a { text-decoration: none; color: var(--navy); }
+.post-card h2 a:hover { color: var(--green-dark); }
+.post-card p { font-size: 1rem; flex: 1; }
+.post-cat, .post-foot { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green-dark); }
+.post-foot { color: var(--text-faint); font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 0.875rem; margin: 0; }
+
+.article-hero h1 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); max-width: 24ch; }
+.crumb { margin-bottom: var(--s2); font-size: 0.9375rem; font-weight: 600; }
+.crumb a { color: var(--green-dark); text-decoration: none; }
+.crumb a:hover { text-decoration: underline; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: var(--s3); font-size: 0.875rem; color: var(--text-faint); }
+.article-meta span { font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green-dark); font-size: 0.8125rem; }
+
+.article > p { font-size: 1.125rem; line-height: 1.7; }
+.article > p + p { margin-top: var(--s3); }
+.article h2 { font-size: clamp(1.3rem, 2.1vw, 1.65rem); margin: var(--s6) 0 var(--s2); }
+.article .article-note { margin-top: var(--s6); padding-top: var(--s3); border-top: 1px solid var(--line); font-size: 0.9375rem; color: var(--text-faint); }
+.article .text-link { margin-top: var(--s4); }
+
+@media (max-width: 1080px) { .post-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .post-grid { grid-template-columns: 1fr; gap: var(--s4); } }
+
 /* 11. MOTION (GSAP) -------------------------------------------------------------- */
 .js [data-reveal] { opacity: 0; transform: translateY(18px); }
 .js.reveal-off [data-reveal], .js [data-reveal].is-in { opacity: 1; transform: none; }
