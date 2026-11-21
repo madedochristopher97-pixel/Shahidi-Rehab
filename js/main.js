@@ -110,6 +110,7 @@
   function initSmoothScroll() {
     if (reduceMotion || typeof window.Lenis === 'undefined') return;
     lenis = new window.Lenis({ duration: 1.1, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
+    window.__lenis = lenis;
 
     if (window.gsap && window.ScrollTrigger) {
       lenis.on('scroll', window.ScrollTrigger.update);
