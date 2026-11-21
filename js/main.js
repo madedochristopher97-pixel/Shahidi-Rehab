@@ -6,7 +6,9 @@
 (function () {
   'use strict';
 
-  var CONTACT_EMAIL = 'info@restorarehabcenter.com';
+  // info@restorarehabcenter.com has no mail service yet (no MX records), so messages sent there are lost.
+  // Switch back to it only once it is confirmed to receive mail.
+  var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
   var CONTACT_PHONE = '+254 795 180 704';
   // Form delivery via FormSubmit (no account). First submission sends a one-time activation email to CONTACT_EMAIL.
   var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
@@ -94,7 +96,12 @@
         feedback.textContent = '';
         fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
           .then(function (res) {
-            if (!res.ok) throw new Error('status ' + res.status);
+            return res.json().catch(function () { return {}; }).then(function (body) { return { ok: res.ok, body: body }; });
+          })
+          .then(function (r) {
+            // FormSubmit answers 200 even when it has not delivered the message (for example while
+            // the form still needs activating), so trust its success flag, not just the status code
+            if (!r.ok || String(r.body.success) !== 'true') throw new Error(r.body.message || 'not delivered');
             form.reset();
             show('success', 'Thank you, ' + name + '. We have your message and will reply privately. If it is urgent, please ' + fallback);
           })
