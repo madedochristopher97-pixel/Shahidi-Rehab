@@ -8,8 +8,11 @@
 
   var CONTACT_EMAIL = 'info@restorarehabcenter.com';
   var CONTACT_PHONE = '+254 795 180 704';
-  // Form delivery via FormSubmit (no account). First submission sends a one-time activation email to CONTACT_EMAIL.
-  var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
+  // Enquiries go straight to the inbox rather than through info@'s forwarding (ImprovMX), so the form
+  // keeps working even if forwarding has an outage. Delivery is via FormSubmit (no account): the first
+  // submission sends a one-time activation email to FORM_INBOX, and nothing is delivered until it is clicked.
+  var FORM_INBOX = 'restoracentreforrecovery@gmail.com';
+  var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_INBOX;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lenis = null;
 
@@ -94,7 +97,12 @@
         feedback.textContent = '';
         fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
           .then(function (res) {
-            if (!res.ok) throw new Error('status ' + res.status);
+            return res.json().catch(function () { return {}; }).then(function (body) { return { ok: res.ok, body: body }; });
+          })
+          .then(function (r) {
+            // FormSubmit answers 200 even when it has not delivered the message (for example while
+            // the form still needs activating), so trust its success flag, not just the status code
+            if (!r.ok || String(r.body.success) !== 'true') throw new Error(r.body.message || 'not delivered');
             form.reset();
             show('success', 'Thank you, ' + name + '. We have your message and will reply privately. If it is urgent, please ' + fallback);
           })

@@ -565,7 +565,8 @@ a.contact-row:hover .val { color: var(--green-dark); }
 .check-errors { padding: 12px 16px; border-radius: var(--radius); background: #fdf1ef; color: #8e2a17; border: 1px solid #f1c7bd; }
 .check-errors p { color: inherit; }
 .check-actions { display: none; flex-wrap: wrap; gap: var(--s2); }
-.js .check-actions { display: flex; }
+.check-form.is-ready .check-actions { display: flex; }
+.check-form.is-ready .check-fallback { display: none; }
 
 /* Results */
 .results {
