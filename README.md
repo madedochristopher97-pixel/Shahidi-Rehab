@@ -3,7 +3,7 @@
 Marketing website for Restora Centre for Recovery, an addiction treatment and family support centre on Old Namanga Rd, Kitengela.
 
 - **Phone / WhatsApp:** +254 795 180 704
-- **Email:** restoracentreforrecovery@gmail.com
+- **Email:** info@restorarehabcenter.com (forwards to restoracentreforrecovery@gmail.com via ImprovMX)
 - **Location:** Old Namanga Rd, Kitengela
 
 ## Stack
@@ -48,10 +48,18 @@ The files in `images/` are SVGO-optimised copies of the originals in `Assets/Her
 
 ## Enquiry forms
 
-Forms are sent through [Formspree](https://formspree.io). To switch them on:
+Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restoracentreforrecovery@gmail.com, set as `FORM_INBOX` in `js/main.js`. They deliberately bypass the info@ forwarding, so enquiries still arrive if ImprovMX has an outage.
 
-1. Create a free Formspree form that delivers to restoracentreforrecovery@gmail.com.
-2. Copy its endpoint (looks like `https://formspree.io/f/abcdwxyz`).
-3. Paste it into `FORMSPREE_ENDPOINT` at the top of `js/main.js`.
+**FormSubmit must be activated once per inbox.** The first submission sends an activation email to `FORM_INBOX`, and nothing is delivered until someone clicks **Activate Form** in it. If `FORM_INBOX` is ever changed, submit one test and activate again.
 
-Until an endpoint is set, the forms fall back to opening the visitor's email app with the message pre-filled. Each form includes a hidden spam-trap field, and visitors see a clear success or error message with the phone number as backup.
+The form checks FormSubmit's `success` flag, not just the HTTP status, because FormSubmit answers 200 even when it has not delivered (for example before activation). Visitors see a clear success or error message, with the phone number as backup, and each form includes a hidden spam-trap field.
+
+## Email
+
+`info@restorarehabcenter.com` forwards to restoracentreforrecovery@gmail.com through [ImprovMX](https://improvmx.com). DNS lives at Vercel, so the mail records are there, not at TrueHost:
+
+| Type | Value | Priority |
+|---|---|---|
+| MX | `mx1.improvmx.com` | 10 |
+| MX | `mx2.improvmx.com` | 20 |
+| TXT | `v=spf1 include:spf.improvmx.com ~all` | |

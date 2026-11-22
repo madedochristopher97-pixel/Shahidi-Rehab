@@ -6,12 +6,13 @@
 (function () {
   'use strict';
 
-  // info@restorarehabcenter.com has no mail service yet (no MX records), so messages sent there are lost.
-  // Switch back to it only once it is confirmed to receive mail.
-  var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
+  var CONTACT_EMAIL = 'info@restorarehabcenter.com';
   var CONTACT_PHONE = '+254 795 180 704';
-  // Form delivery via FormSubmit (no account). First submission sends a one-time activation email to CONTACT_EMAIL.
-  var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
+  // Enquiries go straight to the inbox rather than through info@'s forwarding (ImprovMX), so the form
+  // keeps working even if forwarding has an outage. Delivery is via FormSubmit (no account): the first
+  // submission sends a one-time activation email to FORM_INBOX, and nothing is delivered until it is clicked.
+  var FORM_INBOX = 'restoracentreforrecovery@gmail.com';
+  var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_INBOX;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lenis = null;
 

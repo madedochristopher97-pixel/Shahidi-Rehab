@@ -71,6 +71,9 @@
   var PRIVACY = '<p class="res-fine">Your answers stay on this device. Nothing has been saved or sent.</p>';
 
   function wire(form, results, render, onReset) {
+    // Reveal "See my results" only now that this script is running (see .is-ready in style.css)
+    form.classList.add('is-ready');
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var got = collect(form);
