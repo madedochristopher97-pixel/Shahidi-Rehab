@@ -529,6 +529,19 @@ a.contact-row:hover .val { color: var(--green-dark); }
 /* Legal */
 .legal h2 { font-size: 1.4rem; margin: var(--s5) 0 var(--s1); }
 .legal h2:first-of-type { margin-top: 0; }
+.legal-lead { font-size: 1.125rem; color: var(--text); }
+.legal .legal-lead + h2, .legal .emergency + h2 { margin-top: var(--s5); }
+.legal .emergency { margin-top: 0; }
+.legal-list { display: flex; flex-direction: column; gap: 10px; margin-top: var(--s2); max-width: 68ch; }
+.legal-list li { position: relative; padding-left: 22px; color: var(--text-muted); }
+.legal-list li::before { content: ''; position: absolute; left: 4px; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.legal-list strong { color: var(--text); font-weight: 600; }
+.check-disclaimer {
+  margin-bottom: var(--s4); padding: var(--s2) var(--s3); border: 1px solid var(--line); border-left: 4px solid var(--navy);
+  border-radius: 0 var(--radius) var(--radius) 0; background: var(--navy-soft);
+}
+.check-disclaimer p { margin: 0; max-width: none; font-size: 0.9375rem; color: var(--text); }
+.check-disclaimer strong { color: var(--navy); }
 
 
 /* Blog ------------------------------------------------------------------- */
