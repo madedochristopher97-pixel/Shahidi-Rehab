@@ -171,14 +171,29 @@
       });
     }
 
-    // Hero photograph drifts a little slower than the page
-    var heroImg = document.querySelector('.hero-media img');
-    if (heroImg && window.matchMedia('(min-width: 821px)').matches) {
-      gsap.to(heroImg, {
-        yPercent: -10, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+  }
+
+  /* ---------- Home hero: meadow and butterflies rise once (timing lives in CSS, from Figma) ---------- */
+  function initHeroRise() {
+    var hero = document.querySelector('.hero-calm');
+    if (!hero) return;
+    var started = false;
+    var play = function () {
+      if (started) return;
+      started = true;
+      requestAnimationFrame(function () { hero.classList.add('is-playing'); });
+    };
+    // Wait for the meadow and butterflies so the rise is seen, but never hold the page for long
+    var imgs = Array.prototype.slice.call(hero.querySelectorAll('.hc-rise img, img.hc-rise'));
+    var ready = imgs.map(function (img) {
+      if (img.complete && img.naturalWidth) return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+      return new Promise(function (resolve) {
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
       });
-    }
+    });
+    Promise.all(ready).then(play);
+    setTimeout(play, 2500);
   }
 
   /* ---------- Facility gallery: open a photo full size ---------- */
@@ -244,6 +259,7 @@
     initSmoothScroll();
     initDrawer();
     initMotion();
+    initHeroRise();
     initGallery();
   }
 
