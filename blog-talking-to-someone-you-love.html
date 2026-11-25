@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- Google Tag Manager, loaded only after the visitor accepts analytics cookies (banner: js/main.js) -->
+  <script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+  window.restoraLoadAnalytics=function(){if(window.__gtmLoaded)return;window.__gtmLoaded=true;
+  gtag('consent','update',{analytics_storage:'granted'});
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-K48K68ZP');</script>
+  })(window,document,'script','dataLayer','GTM-K48K68ZP');};
+  try{var c=JSON.parse(localStorage.getItem('restora-cookie-consent'));if(c&&c.choice==='granted'&&Date.now()-c.at<31536000000)window.restoraLoadAnalytics();}catch(e){}
+  </script>
   <!-- End Google Tag Manager -->
   <title>How to talk to someone you love about getting help | Restora Centre for Recovery</title>
   <meta name="description" content="A calm, practical guide for families in Kenya on raising addiction treatment with someone you love, without blame or ultimatums.">
@@ -41,18 +48,14 @@
   <link rel="preload" href="fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/CooperLtBT-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to talk to someone you love about getting help", "description": "A calm, practical guide for families in Kenya on raising addiction treatment with someone you love, without blame or ultimatums.", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://www.restorarehabcenter.com/images/og-hero.jpg", "mainEntityOfPage": "https://www.restorarehabcenter.com/blog-talking-to-someone-you-love.html", "author": {"@type": "Organization", "name": "Restora Centre for Recovery"}, "publisher": {"@type": "Organization", "name": "Restora Centre for Recovery", "logo": {"@type": "ImageObject", "url": "https://www.restorarehabcenter.com/images/logo-blue.svg"}}}</script>
-  <link rel="stylesheet" href="css/style.css?v=20261124">
+  <link rel="stylesheet" href="css/style.css?v=20261125">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__animReady)document.documentElement.classList.add('reveal-off')},4000);</script>
   <script src="js/vendor/gsap.min.js" defer></script>
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/lenis.min.js" defer></script>
-  <script src="js/main.js?v=20261124" defer></script>
+  <script src="js/main.js?v=20261125" defer></script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K48K68ZP"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="site-header" id="siteHeader">
@@ -188,6 +191,7 @@
           <li><a href="complaints-feedback.html">Complaints &amp; Feedback Policy</a></li>
           <li><a href="confidentiality.html">Confidentiality Statement</a></li>
           <li><a href="emergency-notice.html">Emergency Notice</a></li>
+          <li><button type="button" class="footer-cookie-btn" data-cookie-settings>Cookie Settings</button></li>
         </ul>
       </nav>
     </div>
