@@ -253,7 +253,90 @@
     });
   }
 
+  /* ---------- Cookie consent: analytics only after "Accept" ----------
+     The loader in each page's <head> keeps Google Tag Manager switched off until the visitor has
+     accepted (window.restoraLoadAnalytics). The choice is kept for 12 months in localStorage and
+     can be changed from "Cookie Settings" in the footer. */
+  function initConsent() {
+    var KEY = 'restora-cookie-consent';
+    var YEAR = 365 * 24 * 60 * 60 * 1000;
+
+    function readChoice() {
+      try {
+        var c = JSON.parse(localStorage.getItem(KEY));
+        if (c && (c.choice === 'granted' || c.choice === 'denied') && Date.now() - c.at < YEAR) return c.choice;
+      } catch (e) {}
+      return null;
+    }
+    function saveChoice(choice) {
+      try { localStorage.setItem(KEY, JSON.stringify({ choice: choice, at: Date.now() })); } catch (e) {}
+    }
+    function clearAnalyticsCookies() {
+      var host = location.hostname;
+      var domains = ['', host, '.' + host, '.' + host.replace(/^www\./, '')];
+      document.cookie.split(';').forEach(function (part) {
+        var name = part.split('=')[0].trim();
+        if (!/^(_ga|_gid|_gat)/.test(name)) return;
+        domains.forEach(function (d) {
+          document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+        });
+      });
+    }
+
+    var bar = document.createElement('section');
+    bar.className = 'cookie-bar';
+    bar.setAttribute('aria-labelledby', 'cookieTitle');
+    bar.hidden = true;
+    bar.innerHTML =
+      '<p class="cookie-title" id="cookieTitle">Cookies and analytics</p>' +
+      '<p>With your permission, we use Google Analytics cookies to see how people use this website, so we can make it easier to use. ' +
+      'Your self-check answers are never collected. If you decline, no analytics run.</p>' +
+      '<p class="cookie-more"><a href="privacy.html#analytics">Read our privacy policy</a></p>' +
+      '<div class="cookie-actions">' +
+      '<button type="button" class="btn btn-navy btn-sm" data-consent="granted">Accept</button>' +
+      '<button type="button" class="btn btn-outline btn-sm" data-consent="denied">Decline</button>' +
+      '</div>';
+    document.body.appendChild(bar);
+
+    var returnFocus = null;
+    function open(fromSettings) {
+      returnFocus = fromSettings || null;
+      bar.hidden = false;
+      requestAnimationFrame(function () { bar.classList.add('is-open'); });
+      if (fromSettings) bar.querySelector('[data-consent="granted"]').focus({ preventScroll: true });
+    }
+    function close() {
+      bar.classList.remove('is-open');
+      setTimeout(function () { bar.hidden = true; }, 300);
+      if (returnFocus) returnFocus.focus({ preventScroll: true });
+    }
+
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      var choice = btn.getAttribute('data-consent');
+      saveChoice(choice);
+      if (choice === 'granted') {
+        if (window.restoraLoadAnalytics) window.restoraLoadAnalytics();
+      } else {
+        var wasOn = !!window.__gtmLoaded;
+        if (window.gtag) window.gtag('consent', 'update', { analytics_storage: 'denied' });
+        clearAnalyticsCookies();
+        // Tag Manager cannot be unloaded from a running page, so start this page again without it
+        if (wasOn) { window.location.reload(); return; }
+      }
+      close();
+    });
+
+    document.querySelectorAll('[data-cookie-settings]').forEach(function (btn) {
+      btn.addEventListener('click', function () { open(btn); });
+    });
+
+    if (!readChoice()) open();
+  }
+
   function init() {
+    initConsent();
     initHeader();
     initForms();
     initSmoothScroll();
