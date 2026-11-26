@@ -402,6 +402,12 @@
   function initStories() {
     var root = document.querySelector('[data-stories]');
     if (!root) return;
+    // While the section still holds sample stories it is hidden, except on the preview link (?preview-stories)
+    var section = root.closest('.stories');
+    if (section && section.hidden) {
+      if (!/[?&]preview-stories(=|&|$)/.test(window.location.search)) return;
+      section.hidden = false;
+    }
     var stage = root.querySelector('.stories-stage');
     var cards = Array.prototype.slice.call(stage.querySelectorAll('.story'));
     var dotsWrap = root.querySelector('.stories-dots');
@@ -558,10 +564,10 @@
     initReviewForm();
     initSmoothScroll();
     initDrawer();
+    initStories();   // before initMotion, so a previewed stories section is visible when reveals are measured
     initMotion();
     initHeroRise();
     initGallery();
-    initStories();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

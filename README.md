@@ -56,7 +56,9 @@ The form checks FormSubmit's `success` flag, not just the HTTP status, because F
 
 ## Recovery stories (home page carousel)
 
-The carousel in `index.html` (section `stories`) shows one card per story. The seven stories in it now are **samples**: replace them with real, approved stories before going live.
+The carousel in `index.html` (section `stories`) shows one card per story. The seven stories in it now are **samples**, so the section is **hidden on the live site** (`hidden` on the `<section class="stories">` tag). To preview it, add `?preview-stories` to the home page address, for example `https://www.restorarehabcenter.com/?preview-stories`.
+
+**Publishing the section** (ideally with 5 or more approved stories, so both sides of the carousel are filled): replace every sample `<article class="story">` with real ones, then delete `data-preview-only hidden` from the section tag.
 
 **How a story gets onto the site**
 

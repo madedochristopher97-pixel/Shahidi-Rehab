@@ -212,8 +212,10 @@
     </section>
 
     <!-- Recovery stories. SAMPLE CONTENT: every story below is a placeholder written to show the layout.
-         Replace each one with a real review the person has agreed in writing to publish, before this goes live. -->
-    <section class="stories" aria-labelledby="storiesTitle">
+         The section stays hidden (the `hidden` attribute) until real, approved stories replace the samples;
+         add ?preview-stories to the page address to see it meanwhile. To publish: swap in the real stories,
+         then delete `hidden` and `data-preview-only` from this tag. Steps in README.md, "Recovery stories". -->
+    <section class="stories" aria-labelledby="storiesTitle" data-preview-only hidden data-nosnippet>
       <div class="container stories-head" data-reveal>
         <p class="stories-eyebrow">Recovery stories</p>
         <h2 id="storiesTitle">Real people. Real recoveries.</h2>
