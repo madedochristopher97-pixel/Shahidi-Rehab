@@ -114,6 +114,68 @@
     });
   }
 
+  /* ---------- Share your story: sent to the team's inbox for approval, never straight onto the site ----------
+     The email's field names match the parts of a story card, so an approved email can be copied into
+     index.html as it is. Approval steps are in README.md ("Recovery stories"). */
+  function initReviewForm() {
+    var form = document.querySelector('form[data-review]');
+    if (!form) return;
+    var feedback = form.querySelector('.form-feedback');
+    var button = form.querySelector('button[type="submit"]');
+    var label = button.textContent;
+    var story = form.elements.story;
+    var count = form.querySelector('.field-count');
+    var max = Number(story.getAttribute('maxlength')) || 400;
+
+    function show(type, text) { feedback.className = 'form-feedback ' + type; feedback.textContent = text; }
+    function updateCount() { var left = max - story.value.length; count.textContent = left < 120 ? left + ' characters left' : ''; }
+    story.addEventListener('input', updateCount);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.elements._gotcha.value) return; // spam trap
+      var v = function (n) { return (form.elements[n].value || '').trim(); };
+      var name = v('displayName');
+
+      var missing = !name ? form.elements.displayName : !v('relation') ? form.elements.relation : !v('story') ? story : !form.elements.consent.checked ? form.elements.consent : null;
+      if (missing) {
+        show('error', missing === form.elements.consent
+          ? 'Please tick the box to agree that we can publish your story.'
+          : 'Please add the name to show, who you are and your story.');
+        missing.focus();
+        return;
+      }
+
+      var data = new FormData();
+      data.append('_subject', 'Story to review: ' + name);
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+      data.append('Name shown on card', name);
+      data.append('Who they are (card tag)', v('relation'));
+      data.append('Care received (photo caption)', v('care') || 'Not given');
+      data.append('Headline', v('headline') || 'Not given');
+      data.append('Story (quote)', v('story'));
+      data.append('Private contact (never published)', v('contact') || 'Not given');
+      data.append('Consent to publish', 'Yes, ticked on ' + new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }));
+      data.append('To approve', 'Forward this email to the website designer, or add the Gmail label "Approved story". Nothing is published until then.');
+      if (/^\S+@\S+\.\S+$/.test(v('contact'))) data.append('email', v('contact'));
+
+      button.disabled = true; button.textContent = 'Sending...';
+      feedback.className = 'form-feedback'; feedback.textContent = '';
+      fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (body) { return { ok: res.ok, body: body }; }); })
+        .then(function (r) {
+          if (!r.ok || String(r.body.success) !== 'true') throw new Error(r.body.message || 'not delivered');
+          form.reset(); updateCount();
+          show('success', 'Thank you, ' + name.replace(/\.+$/, '') + '. Our team will read your story before anything is published, and may contact you first if you left your details.');
+        })
+        .catch(function () {
+          show('error', 'Sorry, your story did not send. Please try again, or WhatsApp it to us on ' + CONTACT_PHONE + '.');
+        })
+        .then(function () { button.disabled = false; button.textContent = label; });
+    });
+  }
+
   /* ---------- Lenis smooth scroll, wired to GSAP's ticker ---------- */
   function initSmoothScroll() {
     if (reduceMotion || typeof window.Lenis === 'undefined') return;
@@ -335,12 +397,174 @@
     if (!readChoice()) open();
   }
 
+  // Recovery stories carousel (home). Each card gets its size and position from its distance to the
+  // active card; CSS transitions do the motion (see "RECOVERY STORIES" in css/style.css).
+  function initStories() {
+    var root = document.querySelector('[data-stories]');
+    if (!root) return;
+    // While the section still holds sample stories it is hidden, except on the preview link (?preview-stories)
+    var section = root.closest('.stories');
+    if (section && section.hidden) {
+      if (!/[?&]preview-stories(=|&|$)/.test(window.location.search)) return;
+      section.hidden = false;
+    }
+    var stage = root.querySelector('.stories-stage');
+    var cards = Array.prototype.slice.call(stage.querySelectorAll('.story'));
+    var dotsWrap = root.querySelector('.stories-dots');
+    var pauseBtn = root.querySelector('.stories-pause');
+    var n = cards.length;
+    if (n < 2) return;
+
+    var DWELL = 6500;   // ms each story stays (matches --dwell in the CSS)
+    var SWAP = 240;     // ms before the incoming photo and text appear
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var active = 0, prev = [], timer = null, swapTimer = null, startedAt = 0, remaining = DWELL;
+    var userPaused = reduce, hover = false, focusIn = false, visible = false;
+
+    var dots = cards.map(function (card, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'stories-dot';
+      b.setAttribute('aria-label', 'Story ' + (i + 1) + ' of ' + n);
+      b.appendChild(document.createElement('span'));
+      b.addEventListener('click', function () { go(i); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function offset(i) {
+      var d = ((i - active) % n + n) % n;
+      return d > Math.floor(n / 2) ? d - n : d;
+    }
+
+    function sizes() {
+      var cw = stage.clientWidth;
+      if (cw >= 900) return { w0: Math.min(660, cw * 0.56), h0: 420, w1: 96, h1: 280, w2: 60, h2: 168, gap: 14, r0: 22, r1: 16 };
+      if (cw >= 640) return { w0: cw - 2 * (64 + 12) - 2 * (36 + 12), h0: 400, w1: 64, h1: 260, w2: 36, h2: 150, gap: 12, r0: 20, r1: 14 };
+      // Phones: photo on top, story below; the card is as tall as the longest story needs
+      var w0 = cw - 2 * (16 + 8), ph = Math.round(w0 * 0.66);
+      stage.style.setProperty('--w0', w0 + 'px');
+      stage.style.setProperty('--ph', ph + 'px');
+      var body = 0;
+      cards.forEach(function (c) { body = Math.max(body, c.querySelector('.story-body').offsetHeight); });
+      return { w0: w0, h0: ph + body, w1: 16, h1: Math.round((ph + body) * 0.68), w2: 0, h2: 0, gap: 8, r0: 18, r1: 10 };
+    }
+
+    function layout(animate) {
+      var s = sizes();
+      stage.style.height = s.h0 + 'px';
+      stage.style.setProperty('--w0', s.w0 + 'px');
+      cards.forEach(function (card, i) {
+        var d = offset(i), a = Math.abs(d), side = d < 0 ? -1 : 1;
+        var inner = s.w0 / 2 + s.gap;
+        var w, h, x, r = s.r1, op = 1;
+        if (a === 0) { w = s.w0; h = s.h0; x = -w / 2; r = s.r0; }
+        else if (a === 1) { w = s.w1; h = s.h1; x = side > 0 ? inner : -inner - w; }
+        else if (a === 2 && s.w2) { w = s.w2; h = s.h2; x = side > 0 ? inner + s.w1 + s.gap : -inner - s.w1 - s.gap - w; }
+        else {
+          var far = inner + s.w1 + s.gap + (s.w2 ? s.w2 + s.gap : 0);
+          w = (s.w2 || s.w1) * 0.6; h = (s.h2 || s.h1) * 0.6; x = side > 0 ? far : -far - w; op = 0;
+        }
+        // A card that changes sides off-screen (or across a multi-step jump) moves without animating
+        var p = prev[i];
+        if (!animate || (p !== undefined && p * d < 0 && Math.abs(p - d) > 1)) card.classList.add('no-anim');
+        card.style.width = w + 'px';
+        card.style.height = h + 'px';
+        card.style.opacity = op;
+        card.style.zIndex = 10 - a;
+        card.style.setProperty('--x', x + 'px');
+        card.style.setProperty('--r', r + 'px');
+        card.setAttribute('aria-hidden', a === 0 ? 'false' : 'true');
+        prev[i] = d;
+      });
+      void stage.offsetWidth;
+      cards.forEach(function (card) { card.classList.remove('no-anim'); });
+      dots.forEach(function (b, i) { b.setAttribute('aria-current', i === active ? 'true' : 'false'); });
+    }
+
+    function go(to) {
+      to = ((to % n) + n) % n;
+      if (to === active) return;
+      var old = cards[active], next = cards[to];
+      old.classList.remove('is-active', 'is-swapping');
+      active = to;
+      next.classList.add('is-active', 'is-swapping');
+      clearTimeout(swapTimer);
+      swapTimer = setTimeout(function () { next.classList.remove('is-swapping'); }, SWAP);
+      layout(true);
+      clearTimeout(timer); timer = null; remaining = DWELL;
+      sync();
+    }
+
+    function running() { return !userPaused && !hover && !focusIn && visible && !document.hidden; }
+
+    function sync() {
+      var run = running();
+      root.classList.toggle('is-paused', !run);
+      stage.setAttribute('aria-live', run ? 'off' : 'polite');
+      if (run && !timer) {
+        startedAt = Date.now();
+        timer = setTimeout(function () { timer = null; go(active + 1); }, remaining);
+      } else if (!run && timer) {
+        clearTimeout(timer); timer = null;
+        remaining = Math.max(0, remaining - (Date.now() - startedAt));
+      }
+    }
+
+    function setPaused(p) {
+      userPaused = p;
+      pauseBtn.setAttribute('aria-label', p ? 'Play stories' : 'Pause stories');
+      pauseBtn.innerHTML = p
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+      sync();
+    }
+
+    cards.forEach(function (card, i) {
+      card.addEventListener('click', function () { if (i !== active) go(i); });
+    });
+    pauseBtn.addEventListener('click', function () { setPaused(!userPaused); });
+    root.addEventListener('mouseenter', function () { hover = true; sync(); });
+    root.addEventListener('mouseleave', function () { hover = false; sync(); });
+    root.addEventListener('focusin', function () { focusIn = true; sync(); });
+    root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) { focusIn = false; sync(); } });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
+    });
+    var touchX = null;
+    stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 40) go(active + (dx < 0 ? 1 : -1));
+    });
+    document.addEventListener('visibilitychange', sync);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; sync(); }, { threshold: 0.35 }).observe(stage);
+    } else { visible = true; }
+
+    var raf = 0;
+    window.addEventListener('resize', function () {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { layout(false); });
+    });
+
+    cards[0].classList.add('is-active');
+    layout(false);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(false); });
+    setPaused(userPaused);
+  }
+
   function init() {
     initConsent();
     initHeader();
     initForms();
+    initReviewForm();
     initSmoothScroll();
     initDrawer();
+    initStories();   // before initMotion, so a previewed stories section is visible when reveals are measured
     initMotion();
     initHeroRise();
     initGallery();

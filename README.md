@@ -54,6 +54,29 @@ Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restorace
 
 The form checks FormSubmit's `success` flag, not just the HTTP status, because FormSubmit answers 200 even when it has not delivered (for example before activation). Visitors see a clear success or error message, with the phone number as backup, and each form includes a hidden spam-trap field.
 
+## Recovery stories (home page carousel)
+
+The carousel in `index.html` (section `stories`) shows one card per story. The seven stories in it now are **samples**, so the section is **hidden on the live site** (`hidden` on the `<section class="stories">` tag). To preview it, add `?preview-stories` to the home page address, for example `https://www.restorarehabcenter.com/?preview-stories`.
+
+**Publishing the section** (ideally with 5 or more approved stories, so both sides of the carousel are filled): replace every sample `<article class="story">` with real ones, then delete `data-preview-only hidden` from the section tag.
+
+**How a story gets onto the site**
+
+1. A client fills in the form on `share-your-story.html` (linked under the carousel and in every footer; staff can also send clients the link directly).
+2. It arrives in restoracentreforrecovery@gmail.com with the subject **"Story to review: <name>"**. Nothing is published automatically.
+3. The team reads it. If they approve it, they **forward the email to the website designer** (or add the Gmail label **Approved story**). If not, they simply archive it. They can phone or email the client first if a detail needs checking.
+4. The designer adds one `<article class="story">` to `index.html`, copying the email's fields into the card:
+
+| Email field | Goes into |
+|---|---|
+| Name shown on card | first `<span>` in `.story-who` |
+| Who they are (card tag) | second `<span>` in `.story-who` |
+| Headline | `.story-stat` (if "Not given", write a short one and check it with the team) |
+| Story (quote) | `<blockquote><p>` |
+| Care received (photo caption) | `<figcaption>`, and pick a matching photo from `images/` |
+
+Never use a photo of a real client unless they have agreed to it separately. Keep the approved email: it is the record of consent. If someone asks for their story to be removed, delete their `<article>` and update the `aria-label` numbers ("1 of 7" and so on) on the remaining cards.
+
 ## Email
 
 `info@restorarehabcenter.com` forwards to restoracentreforrecovery@gmail.com through [ImprovMX](https://improvmx.com). DNS lives at Vercel, so the mail records are there, not at TrueHost:

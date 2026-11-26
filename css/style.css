@@ -823,6 +823,132 @@ a.contact-row:hover .val { color: var(--green-dark); }
   }
 }
 
+/* 10b. HOME: RECOVERY STORIES ------------------------------------------------------ */
+/* A row of cards: the centre one is wide (story + photo), with two shrinking photo cards on each side.
+   On change, the outgoing story's text fades and its photo fills the card while the card narrows into
+   a side card; the incoming side card grows into a blank card, then its photo slides in on the right
+   and the text fades up. Sizes and positions are set per card by js/main.js (initStories). */
+.stories {
+  --story-ease: cubic-bezier(0.45, 0, 0.15, 1);
+  --dwell: 6.5s;
+  position: relative; isolation: isolate; overflow: hidden;
+  padding-block: clamp(72px, 9vw, 120px) clamp(48px, 6vw, 80px);
+  background:
+    radial-gradient(55% 40% at 10% 62%, rgba(107, 164, 105, 0.55), rgba(107, 164, 105, 0) 72%),
+    radial-gradient(50% 42% at 92% 52%, rgba(122, 178, 214, 0.6), rgba(122, 178, 214, 0) 72%),
+    radial-gradient(80% 38% at 40% 100%, #fbfaf7 35%, rgba(251, 250, 247, 0) 78%),
+    linear-gradient(180deg, #00335e 0%, #134d74 26%, #4f8f9c 50%, #a9d6c4 72%, #e9f4ec 88%, #fbfaf7 100%);
+}
+.stories-head { text-align: center; margin-bottom: clamp(32px, 4vw, 52px); }
+.stories-eyebrow {
+  max-width: none; margin-bottom: 14px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.78);
+}
+.stories-head h2 {
+  max-width: 18ch; margin-inline: auto; color: #fff;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem); line-height: 1.04; letter-spacing: -0.03em;
+}
+
+.stories-stage { position: relative; height: 420px; touch-action: pan-y; }
+.story {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(var(--x, -50%), -50%);
+  background: #fff; border-radius: var(--r, 22px); overflow: hidden; cursor: pointer;
+  box-shadow: 0 22px 44px -22px rgba(0, 34, 59, 0.5), 0 2px 6px rgba(0, 34, 59, 0.08);
+  transition: width 0.56s var(--story-ease), height 0.56s var(--story-ease), transform 0.56s var(--story-ease),
+    border-radius 0.56s var(--story-ease), opacity 0.4s ease;
+}
+.story.is-active { cursor: default; }
+.story.no-anim, .story.no-anim * { transition: none !important; }
+
+.story-media {
+  position: absolute; inset: 6px; margin: 0; overflow: hidden;
+  border-radius: max(6px, calc(var(--r, 22px) - 6px)); background: var(--navy-soft);
+  transition: inset 0.18s var(--story-ease), opacity 0.1s ease, transform 0.45s var(--ease);
+}
+.story-media img { width: 100%; height: 100%; object-fit: cover; }
+.story-media figcaption {
+  position: absolute; left: 18px; right: 18px; bottom: 16px; color: #fff;
+  font-family: var(--font-head); font-style: italic; font-size: 1.25rem; line-height: 1.2;
+  text-shadow: 0 1px 12px rgba(0, 34, 59, 0.55); opacity: 0; transition: opacity 0.12s ease;
+}
+.story-media::after {
+  content: ''; position: absolute; inset: 55% 0 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(to top, rgba(0, 34, 59, 0.55), rgba(0, 34, 59, 0)); transition: opacity 0.12s ease;
+}
+
+/* Text column keeps the centre card's width so it never reflows while a card resizes */
+.story-body {
+  position: absolute; top: 0; bottom: 0; left: 0; width: calc(var(--w0, 660px) * 0.5);
+  display: flex; flex-direction: column; padding: clamp(22px, 2.4vw, 32px);
+  opacity: 0; pointer-events: none; transition: opacity 0.12s ease, transform 0.3s var(--ease);
+}
+.story-stat {
+  max-width: none; color: var(--navy); font-weight: 600; letter-spacing: -0.015em;
+  font-size: clamp(1.3rem, 1.9vw, 1.625rem); line-height: 1.2; text-wrap: balance;
+}
+.story-body blockquote { margin-top: auto; }
+.story-body blockquote p {
+  max-width: none; color: var(--text); font-family: var(--font-head);
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem); line-height: 1.4;
+}
+.story-who { display: flex; flex-wrap: wrap; gap: 6px; max-width: none; margin-top: 16px !important; }
+.story-who span {
+  padding: 3px 10px; border: 1px solid var(--line-soft); border-radius: 6px; background: #f5f6f3;
+  font-size: 0.75rem; line-height: 1.5; color: var(--text-muted);
+}
+.story-who span:first-child { color: var(--text); font-weight: 600; }
+
+.story.is-active .story-media { inset: 12px 12px 12px 50%; transition: inset 0.18s var(--story-ease), opacity 0.28s ease-out, transform 0.45s var(--ease); }
+.story.is-active .story-media figcaption, .story.is-active .story-media::after { opacity: 1; transition-duration: 0.3s; transition-delay: 0.15s; }
+.story.is-active .story-body { opacity: 1; pointer-events: auto; transition: opacity 0.24s ease 0.03s, transform 0.4s var(--ease) 0.03s; }
+/* Incoming: hide the photo at once, move it to its new spot unseen, then let it slide in from the right */
+.story.is-swapping .story-media { opacity: 0; transform: translateX(28px); transition: opacity 0.09s ease, inset 0s 0.09s, transform 0s 0.09s; }
+.story.is-swapping .story-body { opacity: 0; transform: translateY(6px); transition: opacity 0.09s ease; }
+.story.is-swapping .story-media figcaption, .story.is-swapping .story-media::after { opacity: 0; transition: none; }
+
+.stories-controls { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: clamp(24px, 3vw, 36px); }
+.stories-dots { display: flex; align-items: center; }
+.stories-dot { display: grid; place-items: center; height: 32px; padding: 0 4px; border: 0; background: none; cursor: pointer; }
+.stories-dot span {
+  position: relative; display: block; width: 8px; height: 8px; border-radius: 99px; overflow: hidden;
+  background: rgba(0, 51, 94, 0.22); transition: width 0.4s var(--ease), background-color 0.2s;
+}
+.stories-dot:hover span { background: rgba(0, 51, 94, 0.4); }
+.stories-dot[aria-current="true"] span { width: 40px; }
+.stories-dot[aria-current="true"] span::after {
+  content: ''; position: absolute; inset: 0; background: var(--navy); border-radius: inherit;
+  transform-origin: left; animation: story-progress var(--dwell) linear forwards;
+}
+.stories.is-paused .stories-dot[aria-current="true"] span::after,
+.stories-carousel.is-paused .stories-dot[aria-current="true"] span::after { animation-play-state: paused; }
+@keyframes story-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.stories-pause {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line); background: rgba(255, 255, 255, 0.7); color: var(--navy);
+}
+.stories-pause:hover { background: #fff; }
+
+.stories-share {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 12px;
+  max-width: none; margin-top: clamp(20px, 2.5vw, 28px); padding-inline: var(--gutter); text-align: center; color: var(--text-muted);
+}
+
+/* Share your story page */
+.story-steps { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s3); padding-left: 1.25rem; color: var(--text-muted); }
+.story-steps li::marker { color: var(--green); font-weight: 700; }
+.story-steps strong { color: var(--text); }
+.field-count { align-self: flex-end; font-size: 0.8125rem; color: var(--text-faint); }
+.check-field { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 0.9375rem; color: var(--text); cursor: pointer; }
+.check-field input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--navy); }
+
+@media (max-width: 639px) {
+  .story-body { top: var(--ph, 220px); bottom: auto; width: var(--w0, 320px); padding: 16px 20px 22px; }
+  .story-body blockquote { margin-top: 12px; }
+  .story.is-active .story-media { inset: 8px 8px auto 8px; height: calc(var(--ph, 220px) - 8px); }
+  .story.is-swapping .story-media { transform: translateY(16px); }
+}
+
 /* 11. MOTION (GSAP) -------------------------------------------------------------- */
 .js [data-reveal] { opacity: 0; transform: translateY(18px); }
 .js.reveal-off [data-reveal], .js [data-reveal].is-in { opacity: 1; transform: none; }
