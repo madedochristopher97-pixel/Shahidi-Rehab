@@ -3,7 +3,7 @@
 Marketing website for Restora Centre for Recovery, an addiction treatment and family support centre on Old Namanga Rd, Kitengela.
 
 - **Phone / WhatsApp:** +254 795 180 704
-- **Email:** info@restorarehabcenter.com (forwards to restoracentreforrecovery@gmail.com via ImprovMX)
+- **Email:** restoracentreforrecovery@gmail.com
 - **Location:** Old Namanga Rd, Kitengela
 
 ## Stack
@@ -48,7 +48,7 @@ The files in `images/` are SVGO-optimised copies of the originals in `Assets/Her
 
 ## Enquiry forms
 
-Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restoracentreforrecovery@gmail.com, set as `FORM_INBOX` in `js/main.js`. They deliberately bypass the info@ forwarding, so enquiries still arrive if ImprovMX has an outage.
+Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restoracentreforrecovery@gmail.com, set as `FORM_INBOX` in `js/main.js`.
 
 **FormSubmit must be activated once per inbox.** The first submission sends an activation email to `FORM_INBOX`, and nothing is delivered until someone clicks **Activate Form** in it. If `FORM_INBOX` is ever changed, submit one test and activate again.
 
@@ -79,7 +79,7 @@ Never use a photo of a real client unless they have agreed to it separately. Kee
 
 ## Email
 
-`info@restorarehabcenter.com` forwards to restoracentreforrecovery@gmail.com through [ImprovMX](https://improvmx.com). DNS lives at Vercel, so the mail records are there, not at TrueHost:
+The site shows and links to restoracentreforrecovery@gmail.com everywhere, so visitors email the Gmail inbox directly. `info@restorarehabcenter.com` is no longer advertised; it still forwards to the same inbox through [ImprovMX](https://improvmx.com) for anyone who has the old address. DNS lives at Vercel, so the mail records are there, not at TrueHost:
 
 | Type | Value | Priority |
 |---|---|---|

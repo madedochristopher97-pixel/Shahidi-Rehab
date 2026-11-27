@@ -6,10 +6,10 @@
 (function () {
   'use strict';
 
-  var CONTACT_EMAIL = 'info@restorarehabcenter.com';
+  // Shown and linked across the site; people email the Gmail inbox directly.
+  var CONTACT_EMAIL = 'restoracentreforrecovery@gmail.com';
   var CONTACT_PHONE = '+254 795 180 704';
-  // Enquiries go straight to the inbox rather than through info@'s forwarding (ImprovMX), so the form
-  // keeps working even if forwarding has an outage. Delivery is via FormSubmit (no account): the first
+  // Form enquiries are delivered via FormSubmit (no account): the first
   // submission sends a one-time activation email to FORM_INBOX, and nothing is delivered until it is clicked.
   var FORM_INBOX = 'restoracentreforrecovery@gmail.com';
   var FORMSPREE_ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_INBOX;
