@@ -3,7 +3,7 @@
 Marketing website for Restora Centre for Recovery, an addiction treatment and family support centre on Old Namanga Rd, Kitengela.
 
 - **Phone / WhatsApp:** +254 795 180 704
-- **Email:** info@restorarehabcenter.com (forwards to restoracentreforrecovery@gmail.com via ImprovMX)
+- **Email:** restoracentreforrecovery@gmail.com
 - **Location:** Old Namanga Rd, Kitengela
 
 ## Stack
@@ -48,7 +48,7 @@ The files in `images/` are SVGO-optimised copies of the originals in `Assets/Her
 
 ## Enquiry forms
 
-Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restoracentreforrecovery@gmail.com, set as `FORM_INBOX` in `js/main.js`. They deliberately bypass the info@ forwarding, so enquiries still arrive if ImprovMX has an outage.
+Forms are delivered by [FormSubmit](https://formsubmit.co) straight to restoracentreforrecovery@gmail.com, set as `FORM_INBOX` in `js/main.js`.
 
 **FormSubmit must be activated once per inbox.** The first submission sends an activation email to `FORM_INBOX`, and nothing is delivered until someone clicks **Activate Form** in it. If `FORM_INBOX` is ever changed, submit one test and activate again.
 
@@ -79,10 +79,27 @@ Never use a photo of a real client unless they have agreed to it separately. Kee
 
 ## Email
 
-`info@restorarehabcenter.com` forwards to restoracentreforrecovery@gmail.com through [ImprovMX](https://improvmx.com). DNS lives at Vercel, so the mail records are there, not at TrueHost:
+The site shows and links to restoracentreforrecovery@gmail.com everywhere, so visitors email the Gmail inbox directly. `info@restorarehabcenter.com` is no longer advertised; it still forwards to the same inbox through [ImprovMX](https://improvmx.com) for anyone who has the old address. DNS lives at Vercel, so the mail records are there, not at TrueHost:
 
 | Type | Value | Priority |
 |---|---|---|
 | MX | `mx1.improvmx.com` | 10 |
 | MX | `mx2.improvmx.com` | 20 |
 | TXT | `v=spf1 include:spf.improvmx.com ~all` | |
+
+## Visitor counter (footer)
+
+The footer shows how many people visited **today**, in the **past 7 days**, **past 30 days** and **past year**. The numbers are Google Analytics "Users" for the property, read by `api/visitors.js` (a Vercel function) and cached for 15 minutes. Until the setup below is done, or if Google ever fails, the counter stays hidden and the footer looks as it did before. It never shows locally with `python -m http.server`, because that server cannot run the function.
+
+Google Analytics only records visitors who click **Accept** on the cookie banner, so the real number of visitors is higher. The footer says so in small print.
+
+### One-time setup
+
+1. **Google Cloud:** at [console.cloud.google.com](https://console.cloud.google.com), create a project (any name, e.g. "Restora website"). Under **APIs & Services → Library**, enable **Google Analytics Data API**.
+2. **Service account:** under **IAM & Admin → Service accounts**, create one (e.g. `visitor-counter`). Open it, go to **Keys → Add key → Create new key → JSON**. A `.json` file downloads. Keep it private and never commit it.
+3. **Give it read access:** in Google Analytics, **Admin → Property access management → +**, add the service account's email (ends in `iam.gserviceaccount.com`) with the **Viewer** role. Untick "Notify new users".
+4. **Property ID:** in Google Analytics, **Admin → Property details**. Copy the **Property ID**, which is only digits (e.g. `412345678`). It is not the `G-` or `GTM-` ID.
+5. **Vercel:** in the project, open **Settings → Environment Variables** and add both, for Production and Preview:
+   - `GA4_PROPERTY_ID`: the digits from step 4
+   - `GA_SERVICE_ACCOUNT_KEY`: open the `.json` file from step 2 and paste its entire contents
+6. Redeploy (Deployments → ⋯ → Redeploy). Then open `https://www.restorarehabcenter.com/api/visitors`: it should show four numbers. If it shows `{"error":"unavailable"}`, the reason is in Vercel's **Logs** for that function (most often step 3 is missing, or the Data API from step 1 is not enabled).
