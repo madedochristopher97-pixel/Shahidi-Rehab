@@ -557,6 +557,56 @@
     setPaused(userPaused);
   }
 
+  /* ---------- Footer visitor counter ----------
+     Counts come from /api/visitors (api/visitors.js, which reads Google Analytics and is cached for 15 min).
+     Nothing is shown until real numbers arrive: if the endpoint is not configured, fails, or the page is
+     served without it (local preview), the footer looks exactly as before. */
+  var VISIT_PERIODS = [
+    { key: 'today', label: 'Today' },
+    { key: 'week', label: 'Past 7 days' },
+    { key: 'month', label: 'Past 30 days' },
+    { key: 'year', label: 'Past year' }
+  ];
+
+  function initVisitorCounter() {
+    var footerTop = document.querySelector('.site-footer .footer-top');
+    if (!footerTop || !window.fetch) return;
+
+    function render(data) {
+      if (!data || VISIT_PERIODS.some(function (p) { return typeof data[p.key] !== 'number'; })) return;
+      var box = document.createElement('div');
+      box.className = 'footer-visits';
+      box.setAttribute('role', 'region');
+      box.setAttribute('aria-labelledby', 'footerVisitsTitle');
+      box.innerHTML =
+        '<p class="footer-visits-title" id="footerVisitsTitle">Visitors to this site</p>' +
+        '<dl class="footer-visits-list">' +
+        VISIT_PERIODS.map(function (p) {
+          return '<div><dt>' + p.label + '</dt><dd>' + Math.max(0, Math.round(data[p.key])).toLocaleString('en-US') + '</dd></div>';
+        }).join('') +
+        '</dl>' +
+        '<p class="footer-visits-note">Counted by Google Analytics, from visitors who accept cookies.</p>';
+      footerTop.appendChild(box);
+      requestAnimationFrame(function () { box.classList.add('is-ready'); });
+    }
+
+    function load() {
+      fetch('/api/visitors', { headers: { accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(render)
+        .catch(function () {});
+    }
+
+    // Only ask once the footer is close to view, so pages nobody scrolls to the end of make no request.
+    if (!('IntersectionObserver' in window)) return load();
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
+      io.disconnect();
+      load();
+    }, { rootMargin: '800px 0px' });
+    io.observe(footerTop);
+  }
+
   function init() {
     initConsent();
     initHeader();
@@ -568,6 +618,7 @@
     initMotion();
     initHeroRise();
     initGallery();
+    initVisitorCounter();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
